@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checklist con Pestañas</title>
     <style>
-        /* Estilos tal como los proporcionaste */
+        /* Estilos generales */
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f4f7fc;
@@ -18,9 +18,10 @@
             text-align: center;
             font-size: 2rem;
             color: #2c3e50;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
+        /* Estilo de las pestañas */
         .tabs {
             display: flex;
             flex-wrap: wrap;
@@ -65,6 +66,7 @@
             display: block;
         }
 
+        /* Productos */
         .product {
             display: flex;
             flex-wrap: wrap;
@@ -104,7 +106,8 @@
             margin-right: 15px;
         }
 
-        #total {
+        /* Totales y botón */
+        #totals {
             text-align: center;
             font-size: 1.2rem;
             font-weight: bold;
@@ -116,9 +119,10 @@
             border-radius: 8px;
             max-width: 300px;
             margin: 20px auto;
+            word-wrap: break-word;
         }
 
-        #calculate, #calculate-final {
+        #calculate {
             display: block;
             margin: 20px auto;
             padding: 12px 25px;
@@ -131,60 +135,13 @@
             transition: background 0.3s ease;
         }
 
-        #calculate:hover, #calculate-final:hover {
+        #calculate:hover {
             background-color: #2980b9;
-        }
-
-        /* Responsividad */
-        @media (max-width: 768px) {
-            .tabs {
-                flex-direction: column;
-            }
-
-            .tab {
-                padding: 10px 20px;
-                margin-bottom: 10px;
-                font-size: 1rem;
-            }
-
-            .product {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .product input[type="number"] {
-                width: 100%;
-            }
-
-            #total {
-                font-size: 1rem;
-                max-width: 90%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .tab {
-                font-size: 0.9rem;
-                padding: 10px 15px;
-            }
-
-            .product label {
-                font-size: 1rem;
-            }
-
-            #calculate, #calculate-final {
-                font-size: 1rem;
-                padding: 10px 20px;
-            }
         }
     </style>
 </head>
 <body>
-    <h1>Lista de Compras</h1>
+    <h1>Checklist con Pestañas</h1>
 
     <div class="tabs">
         <div class="tab active" data-tab="tab1">MERCADO/TIANGUIS</div>
@@ -193,171 +150,47 @@
         <div class="tab" data-tab="tab4">LACTEOS</div>
         <div class="tab" data-tab="tab5">TIENDA</div>
     </div>
-<!--MERCaDO-->
+
     <div id="tab1" class="tab-content active">
         <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 1"/> Piña natural</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 2"/> Papa</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 3"/> Zanahoria</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 3"/> Lechuga</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 3"/> Manzana</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 3"/> Platano Macho</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 3"/> chicharo</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 3"/> Esparragos</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 3"/> Cebolla</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 3"/> Ajo</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 3"/> Espinacas</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 3"/> Champiñones</label>
+            <label><input type="checkbox" class="product-check" data-category="mercado"/> Piña natural</label>
             <input type="number" class="product-cost" placeholder="Costo" />
         </div>
     </div>
 
- <!--Panaderia-->   
     <div id="tab2" class="tab-content">
         <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 4"/> Mini Cuernitos</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 4"/> Mini Hojaldras</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 4"/> Pan Para Sanwich</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 4"/> Volobanes</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 4"/> Pan Blanco</label>
+            <label><input type="checkbox" class="product-check" data-category="panaderia"/> Mini Cuernitos</label>
             <input type="number" class="product-cost" placeholder="Costo" />
         </div>
     </div>
 
-    <!--Carnicos-->
     <div id="tab3" class="tab-content">
         <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 5"/> Pechuga de pollo</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 5"/> Carne molida de res</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 5"/> Jamon para sanwich</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 5"/> Jamon para Sopa</label>
+            <label><input type="checkbox" class="product-check" data-category="carnes"/> Pechuga de pollo</label>
             <input type="number" class="product-cost" placeholder="Costo" />
         </div>
     </div>
 
-    <!--Lacteos-->
     <div id="tab4" class="tab-content">
         <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 6"/> Crema Entera</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 6"/> Crema Deslactosada</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 6"/> mantequilla</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 6"/> Queso Crema</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 6"/> queso Philadelpia</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 6"/> Queso Americano</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 6"/> Queso Panela</label>
+            <label><input type="checkbox" class="product-check" data-category="lacteos"/> Crema Entera</label>
             <input type="number" class="product-cost" placeholder="Costo" />
         </div>
     </div>
 
-
-    <!--TIENDA-->
     <div id="tab5" class="tab-content">
         <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 7"/> Haria pan de fresa</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 7"/> Harina pan de chocolate</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 7"/>Refrescos</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 7"/> Botanas</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-name="Producto 7"/> Vino Blanco</label>
+            <label><input type="checkbox" class="product-check" data-category="tienda"/> Refresco</label>
             <input type="number" class="product-cost" placeholder="Costo" />
         </div>
     </div>
 
-
-    <button id="calculate">Calcular Total</button>
-    <button id="calculate-final">Cálculo Final</button>
-    <div id="total">Total: $0</div>
+    <button id="calculate">Calcular y Guardar</button>
+    <div id="totals">Totales por Categoría y Total General</div>
 
     <script>
-        // Cambiar de pestañas
+        // Cambiar entre pestañas
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
 
@@ -371,73 +204,56 @@
             });
         });
 
-        // Función para guardar los datos en localStorage
-        function saveProductData() {
-            const products = document.querySelectorAll('.product-check');
-            products.forEach(product => {
-                const productName = product.dataset.name;
-                const isChecked = product.checked;
-                const cost = parseFloat(product.closest('.product').querySelector('.product-cost').value) || 0;
-
-                localStorage.setItem(productName + "-checked", isChecked);
-                localStorage.setItem(productName + "-cost", cost);
-            });
-        }
-
-        // Recuperar los datos del localStorage
-        function loadProductData() {
-            const products = document.querySelectorAll('.product-check');
-            products.forEach(product => {
-                const productName = product.dataset.name;
-
-                const isChecked = localStorage.getItem(productName + "-checked") === "true";
-                const cost = parseFloat(localStorage.getItem(productName + "-cost")) || 0;
-
-                product.checked = isChecked;
-                product.closest('.product').querySelector('.product-cost').value = cost;
-            });
-        }
-
-        // Guardar los costos cuando se cambian
-        const productInputs = document.querySelectorAll('.product-cost');
-        productInputs.forEach(input => {
-            input.addEventListener('input', () => {
-                saveProductData();
-            });
-        });
-
-        // Calcular el total de productos seleccionados
+        // Calcular y guardar
         document.getElementById('calculate').addEventListener('click', () => {
-            const checkedProducts = document.querySelectorAll('.product-check:checked');
-            let total = 0;
+            const products = document.querySelectorAll('.product');
+            const categoryTotals = {};
+            let grandTotal = 0;
 
-            checkedProducts.forEach(product => {
-                const costInput = product.closest('.product').querySelector('.product-cost');
-                const cost = parseFloat(costInput.value) || 0;
-                total += cost;
-            });
-
-            document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
-        });
-
-        // Calcular el total de todos los productos
-        document.getElementById('calculate-final').addEventListener('click', () => {
-            let finalTotal = 0;
-            const allProducts = document.querySelectorAll('.product');
-
-            allProducts.forEach(product => {
+            products.forEach(product => {
+                const checkbox = product.querySelector('.product-check');
                 const costInput = product.querySelector('.product-cost');
-                const cost = parseFloat(costInput.value) || 0;
-                finalTotal += cost;
+                const category = checkbox.dataset.category;
+
+                if (checkbox.checked) {
+                    const cost = parseFloat(costInput.value) || 0;
+                    categoryTotals[category] = (categoryTotals[category] || 0) + cost;
+                }
             });
 
-            document.getElementById('total').textContent = `Cálculo Final: $${finalTotal.toFixed(2)}`;
+            grandTotal = Object.values(categoryTotals).reduce((a, b) => a + b, 0);
+
+            // Guardar en localStorage
+            localStorage.setItem('categoryTotals', JSON.stringify(categoryTotals));
+            localStorage.setItem('grandTotal', grandTotal);
+
+            // Mostrar totales
+            const totalsDiv = document.getElementById('totals');
+            totalsDiv.innerHTML = `
+                <div>Totales por Categoría:</div>
+                ${Object.entries(categoryTotals)
+                    .map(([cat, total]) => `<div>${cat}: $${total.toFixed(2)}</div>`)
+                    .join('')}
+                <div>Total General: $${grandTotal.toFixed(2)}</div>
+            `;
         });
 
-        // Cargar los datos al inicio
-        window.onload = function() {
-            loadProductData();
-        };
+        // Cargar datos desde localStorage si existen
+        window.addEventListener('load', () => {
+            const savedCategoryTotals = JSON.parse(localStorage.getItem('categoryTotals'));
+            const savedGrandTotal = localStorage.getItem('grandTotal');
+
+            if (savedCategoryTotals && savedGrandTotal) {
+                const totalsDiv = document.getElementById('totals');
+                totalsDiv.innerHTML = `
+                    <div>Totales por Categoría:</div>
+                    ${Object.entries(savedCategoryTotals)
+                        .map(([cat, total]) => `<div>${cat}: $${total.toFixed(2)}</div>`)
+                        .join('')}
+                    <div>Total General: $${parseFloat(savedGrandTotal).toFixed(2)}</div>
+                `;
+            }
+        });
     </script>
 </body>
 </html>
