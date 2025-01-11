@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador y Lista de Códigos QR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Agregar FontAwesome -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        .qr-list-container {
+            padding: 10px;
+            background-color: #e9f7ff;
+            border-radius: 10px;
+            border: 1px solid #006699;
+            max-height: 150px; /* Altura más pequeña */
+            overflow-y: auto;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        #qr-count {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #006699;
+        }
+
+        video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            border: 2px solid #006699;
+            margin-top: 20px;
+            display: none;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background-color: #006699;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #004466;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .video-container, .qr-list-container {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .qr-list-container {
+            padding: 20px;
+            background-color: #e9f7ff;
+            border-radius: 10px;
+            border: 1px solid #006699;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .qr-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            word-wrap: break-word;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #006699;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            font-size: 18px;
+        }
+
+        .home-button:hover {
+            background-color: #004466;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón para regresar al index.html -->
+    <a href="index.html">
+        <button class="home-button">
+            <i class="fas fa-home"></i> <!-- Ícono de casa -->
+        </button>
+    </a>
+
+    <div class="container">
+        <div class="logo">
+            <img src="https://cardmx.com/Portals/0/Logo-cardmx.png?ver=2017-03-09-130008-383" alt="Logotipo">
+        </div>
+        <h1>Contador y Lista de Códigos QR</h1>
+        <div class="video-container">
+            <video id="video" autoplay playsinline></video>
+        </div>
+        <p id="message">Presiona el botón para iniciar la cámara.</p>
+        <p>Total códigos escaneados: <span id="qr-count">0</span></p>
+        <div class="buttons-container">
+            <button id="toggle-camera">Iniciar Cámara</button>
+            <button id="clear-list">Limpiar Lista</button>
+        </div>
+        <div class="qr-list-container" id="qr-list">
+            <h2>Lista de códigos QR escaneados:</h2>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
+
+    <script>
+        const video = document.getElementById('video');
+        const qrCountElement = document.getElementById('qr-count');
+        const messageElement = document.getElementById('message');
+        const toggleCameraButton = document.getElementById('toggle-camera');
+        const clearListButton = document.getElementById('clear-list');
+        const qrListContainer = document.getElementById('qr-list');
+
+        let qrCount = 0;
+        let scannedCodes = new Set();
+        let stream = null;
+        let isCameraActive = false;
+        let isScanning = false;
+
+        async function startCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: { ideal: 'environment' } }
+                });
+                video.srcObject = stream;
+                video.style.display = 'block';
+                isCameraActive = true;
+                messageElement.textContent = 'Escanea un código QR...';
+
+                video.addEventListener('loadedmetadata', () => {
+                    scanQRCode();
+                });
+            } catch (err) {
+                console.error('Error al acceder a la cámara:', err);
+                messageElement.textContent = 'No se pudo acceder a la cámara.';
+            }
+        }
+
+        function stopCamera() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                video.srcObject = null;
+                video.style.display = 'none';
+                isCameraActive = false;
+                isScanning = false;
+                messageElement.textContent = 'Cámara detenida.';
+            }
+        }
+
+        toggleCameraButton.addEventListener('click', () => {
+            if (isCameraActive) {
+                stopCamera();
+                toggleCameraButton.textContent = 'Iniciar Cámara';
+            } else {
+                startCamera();
+                toggleCameraButton.textContent = 'Detener Cámara';
+            }
+        });
+
+        clearListButton.addEventListener('click', () => {
+            scannedCodes.clear();
+            qrCount = 0;
+            qrCountElement.textContent = qrCount;
+            qrListContainer.innerHTML = '<h2>Lista de códigos QR escaneados:</h2>';
+            messageElement.textContent = 'Lista limpiada.';
+        });
+
+        function scanQRCode() {
+            if (!isCameraActive || isScanning) return;
+
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, canvas.width, canvas.height);
+
+            if (code && !scannedCodes.has(code.data)) {
+                scannedCodes.add(code.data);
+                qrCount++;
+                qrCountElement.textContent = qrCount;
+                messageElement.textContent = '¡Código QR detectado!';
+                addQRToList(code.data);
+                
+                // Evitar múltiples escaneos seguidos del mismo código
+                isScanning = true;
+                setTimeout(() => {
+                    isScanning = false;
+                }, 1500); // 1.5 segundos de espera antes de volver a escanear
+            }
+
+            requestAnimationFrame(scanQRCode);
+        }
+
+        function addQRToList(qrData) {
+            const qrItem = document.createElement('div');
+            qrItem.className = 'qr-item';
+            qrItem.textContent = qrData;
+            qrListContainer.appendChild(qrItem);
+        }
+    </script>
+</body>
+</html>
