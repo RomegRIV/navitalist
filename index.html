@@ -1,259 +1,165 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checklist con Pestañas</title>
+    <title>Lector de Credenciales QR</title>
     <style>
-        /* Estilos generales */
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            color: #333;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 350px;
+            height: 500px;
+            background-color: #c4c4c4;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
 
         h1 {
-            text-align: center;
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-top: 20px;
-        }
-
-        /* Estilo de las pestañas */
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            font-size: 1.5rem;
             margin-bottom: 20px;
-            border-bottom: 2px solid #ddd;
-        }
-
-        .tab {
-            padding: 12px 20px;
-            margin: 5px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            font-size: 1rem;
-            white-space: nowrap;
-        }
-
-        .tab:hover {
-            background-color: #3498db;
-            color: white;
-        }
-
-        .tab.active {
-            background-color: #3498db;
-            color: white;
             font-weight: bold;
         }
 
-        .tab-content {
-            display: none;
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 100%;
+        }
+
+        .button {
+            width: 90%;
             padding: 15px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Productos */
-        .product {
+            margin: 10px 0;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            background-color: #666;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            justify-content: space-between;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            width: 100%;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .product:hover {
-            transform: translateX(5px);
+        .button img {
+            width: 24px;
+            height: 24px;
         }
 
-        .product input[type="number"] {
-            width: 100%;
-            max-width: 120px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-            margin-top: 10px;
+        .button:hover {
+            background-color: #555;
         }
 
-        .product label {
-            flex: 1;
-            font-size: 1rem;
-            color: #333;
-            margin-right: 15px;
-        }
-
-        .product-check {
-            margin-right: 15px;
-        }
-
-        /* Totales y botón */
-        #totals {
-            text-align: center;
+        .info-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: none;
             font-size: 1.2rem;
             font-weight: bold;
-            color: #2c3e50;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #fff;
-            border: 2px solid #3498db;
-            border-radius: 8px;
-            max-width: 300px;
-            margin: 20px auto;
-            word-wrap: break-word;
-        }
-
-        #calculate {
-            display: block;
-            margin: 20px auto;
-            padding: 12px 25px;
-            background-color: #3498db;
-            color: white;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 25px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
-        #calculate:hover {
-            background-color: #2980b9;
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .popup button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #666;
+            color: white;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
     </style>
 </head>
 <body>
-    <h1>Checklist con Pestañas</h1>
 
-    <div class="tabs">
-        <div class="tab active" data-tab="tab1">MERCADO/TIANGUIS</div>
-        <div class="tab" data-tab="tab2">PANADERIA</div>
-        <div class="tab" data-tab="tab3">CARNES</div>
-        <div class="tab" data-tab="tab4">LACTEOS</div>
-        <div class="tab" data-tab="tab5">TIENDA</div>
-    </div>
-
-    <div id="tab1" class="tab-content active">
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-category="mercado"/> Piña natural</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
+    <div class="container">
+        <h1>Lector de credenciales QR</h1>
+        <div class="logo">
+            <img src="https://cardmx.com/Portals/0/Logo-cardmx.png?ver=2017-03-09-130008-383" alt="Logotipo">
         </div>
+
+        <button class="button" onclick="location.href='contadorqr.html'">
+            <img src="https://img.icons8.com/ios-filled/50/FFFFFF/clock.png" alt="Icono de conteo">
+            Conteo de personal
+        </button>
+
+        <button class="button" onclick="location.href='cotejo.html'">
+            <img src="https://img.icons8.com/ios-filled/50/FFFFFF/qr-code.png" alt="Icono de visor">
+            Visor de datos de credencial
+        </button>
+
+        <button class="info-button" onclick="togglePopup()">?</button>
     </div>
 
-    <div id="tab2" class="tab-content">
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-category="panaderia"/> Mini Cuernitos</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
+    <!-- Popup -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+    <div class="popup" id="popup">
+        <p><strong>Echo por:</strong> Manuel Augusto Rojas Mejía.</p>
+        <p><strong>Residente de:</strong> octubre de 2024 a enero de 2025.</p>
+        <button onclick="togglePopup()">Cerrar</button>
     </div>
-
-    <div id="tab3" class="tab-content">
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-category="carnes"/> Pechuga de pollo</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-    </div>
-
-    <div id="tab4" class="tab-content">
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-category="lacteos"/> Crema Entera</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-    </div>
-
-    <div id="tab5" class="tab-content">
-        <div class="product">
-            <label><input type="checkbox" class="product-check" data-category="tienda"/> Refresco</label>
-            <input type="number" class="product-cost" placeholder="Costo" />
-        </div>
-    </div>
-
-    <button id="calculate">Calcular y Guardar</button>
-    <div id="totals">Totales por Categoría y Total General</div>
 
     <script>
-        // Cambiar entre pestañas
-        const tabs = document.querySelectorAll('.tab');
-        const tabContents = document.querySelectorAll('.tab-content');
+        function togglePopup() {
+            const popup = document.getElementById('popup');
+            const overlay = document.getElementById('popup-overlay');
+            const isVisible = popup.style.display === 'block';
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(tc => tc.classList.remove('active'));
-
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.tab).classList.add('active');
-            });
-        });
-
-        // Calcular y guardar
-        document.getElementById('calculate').addEventListener('click', () => {
-            const products = document.querySelectorAll('.product');
-            const categoryTotals = {};
-            let grandTotal = 0;
-
-            products.forEach(product => {
-                const checkbox = product.querySelector('.product-check');
-                const costInput = product.querySelector('.product-cost');
-                const category = checkbox.dataset.category;
-
-                if (checkbox.checked) {
-                    const cost = parseFloat(costInput.value) || 0;
-                    categoryTotals[category] = (categoryTotals[category] || 0) + cost;
-                }
-            });
-
-            grandTotal = Object.values(categoryTotals).reduce((a, b) => a + b, 0);
-
-            // Guardar en localStorage
-            localStorage.setItem('categoryTotals', JSON.stringify(categoryTotals));
-            localStorage.setItem('grandTotal', grandTotal);
-
-            // Mostrar totales
-            const totalsDiv = document.getElementById('totals');
-            totalsDiv.innerHTML = `
-                <div>Totales por Categoría:</div>
-                ${Object.entries(categoryTotals)
-                    .map(([cat, total]) => `<div>${cat}: $${total.toFixed(2)}</div>`)
-                    .join('')}
-                <div>Total General: $${grandTotal.toFixed(2)}</div>
-            `;
-        });
-
-        // Cargar datos desde localStorage si existen
-        window.addEventListener('load', () => {
-            const savedCategoryTotals = JSON.parse(localStorage.getItem('categoryTotals'));
-            const savedGrandTotal = localStorage.getItem('grandTotal');
-
-            if (savedCategoryTotals && savedGrandTotal) {
-                const totalsDiv = document.getElementById('totals');
-                totalsDiv.innerHTML = `
-                    <div>Totales por Categoría:</div>
-                    ${Object.entries(savedCategoryTotals)
-                        .map(([cat, total]) => `<div>${cat}: $${total.toFixed(2)}</div>`)
-                        .join('')}
-                    <div>Total General: $${parseFloat(savedGrandTotal).toFixed(2)}</div>
-                `;
-            }
-        });
+            popup.style.display = isVisible ? 'none' : 'block';
+            overlay.style.display = isVisible ? 'none' : 'block';
+        }
     </script>
+
 </body>
 </html>
