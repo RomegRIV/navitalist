@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Documentación</title>
+<!--INICIA ESTILOS--> 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f2f2f2;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #b7b7b7;
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        header button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s ease;
+        }
+
+        header button:hover {
+            background: #555;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #ff7f00;
+        }
+
+        .menu {
+            width: 90%;
+            margin: 10px auto;
+        }
+
+        .menu-button {
+            width: 100%;
+            padding: 12px;
+            background: #ff7f00;
+            color: white;
+            border: none;
+            text-align: left;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .menu-button:hover {
+            background: #e96b00;
+        }
+
+        .submenu-button {
+            width: 90%;
+            padding: 10px;
+            background: #e0e0e0;
+            color: #333;
+            border: none;
+            text-align: left;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin: 5px auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .submenu-button:hover {
+            background: #d6d6d6;
+        }
+
+        .menu-content, .submenu-content, .nested-submenu-content {
+            display: none;
+            background: white;
+            padding: 10px;
+            border-radius: 3px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-content a, .submenu-content a, .nested-submenu-content a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            padding: 8px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 5px;
+        }
+
+        .menu-content a:hover, .submenu-content a:hover, .nested-submenu-content a:hover {
+            background-color: #ffe4c2;
+        }
+
+        .nested-submenu-button {
+            width: 90%;
+            padding: 10px;
+            background: #e0e0e0;
+            color: #333;
+            border: none;
+            text-align: left;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin: 5px auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .nested-submenu-button:hover {
+            background: #d6d6d6;
+        }
+
+        /* Icon Styles */
+        .icon {
+            font-size: 18px;
+            color: white;
+        }
+
+        .icon-submenu {
+            font-size: 16px;
+            color: #333;
+        }
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-button {
+                font-size: 14px;
+            }
+
+            .submenu-button, .nested-submenu-button {
+                font-size: 12px;
+            }
+
+            .menu-content a, .submenu-content a, .nested-submenu-content a {
+                font-size: 12px;
+            }
+        }
+    </style>
+<!--TERMINA ESTILOS-->
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <img src="https://cardmx.com/Portals/0/Logo-cardmx.png?ver=2017-03-09-130008-383" alt="CARDMX-Logo">
+        <button onclick="window.location.href='index.html'">
+            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+        </button>
+    </header>
+
+    <div class="container">
+        <h1>Centro de Documentación</h1>
+
+        <!--COMERCIALIZACIÓN-->        
+        <div class="menu">
+            <button class="menu-button">
+                <i class="fas fa-chart-line icon"></i> Comercialización </button>
+            <div class="menu-content">
+                <a href="https://drive.google.com/file/d/1J1tR6oJcOW6EvBlO2s-pMJiw4WgW6h1P/view?usp=sharing" target="_blank">
+                    <i class="fas fa-file-alt"></i>
+                    Manual de Comercialización <b>CDM-AD-PC-004</b>
+                </a>
+
+                <!--VENTAS--> 
+                <button class="submenu-button">
+                    <i class="fas fa-dollar-sign icon-submenu"></i> Ventas </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1UWqGiN7GCXTUdIPhdEzU4c2JJNHq08gS/view?usp=sharing">Proceso de ventas <b>CDM-AD-PC-004</b></a>
+                </div>
+
+                <!--DISEÑO--> 
+                <button class="submenu-button">
+                    <i class="fas fa-paint-brush icon-submenu"></i> Diseño </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1oe2fGXY8WlWuxryiQmGoTVUnH0s6CGRS/view?usp=sharing ">Proceso de diseño <b>CDM-AD-PC-002</b></a>
+                </div>
+
+                <!--BASE DE DATOS--> 
+                <button class="submenu-button">
+                    <i class="fas fa-database icon-submenu"></i> Base de Datos </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1rwN3Ud-l7V-Mahr9IzpLthW_jpMdYRe-/view?usp=sharing" target="_blank">Procedimiento para Base de Datos <b>CDM-PR-PD-012</b>
+                    </a>
+                </div>
+
+                <!--ATENCIÓN AL CLIENTE--> 
+                <button class="submenu-button">
+                    <i class="fas fa-headset icon-submenu"></i> Atención al Cliente </button>
+                <div class="submenu-content">
+                    <a href="#">Encuaesta a clientes</a>
+                </div>
+
+                <!--DEVOLUCIONES--> 
+                <button class="submenu-button">
+                    <i class="fas fa-undo icon-submenu"></i> Devoluciones </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1KGQfOHR7zZ8IpVvBaWh9gueV8djzPaVJ/view?usp=sharing "> Formato para devolución de tarjetas<b>CDM-AD-FR-053</b></a>
+                    <a href="https://drive.google.com/file/d/1tMpnNvH-2c_AqalNgqkjUiG6rdzB3mzL/view?usp=sharing ">  Formato de Orden de Cambio <b>CDM-AD-FR-054</b></a>
+                </div>
+
+            </div>
+        </div>
+
+ <!-- PRODUCCION -->
+        <div class="menu">
+            <button class="menu-button">
+                <i class="fas fa-file-alt icon"></i> Produccion </button>
+            <div class="menu-content">
+                <a href="https://drive.google.com/file/d/1J1tR6oJcOW6EvBlO2s-pMJiw4WgW6h1P/view?usp=sharing" target="_blank">
+                    <i class="fas fa-file-alt"></i>
+                    Manual de Comercialización <b>CDM-AD-PC-004</b>
+                </a>
+
+                <!-- Mantenimiento -->
+                <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Mantenimiento </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1XoL2oT8Hj5AI3LMz3XqpCozT1QC3I6QP/view?usp=sharing" target="_blank">Proceso de Mantenimiento<b>CDM-AD-PC-005</b></a>
+                    <a href="https://drive.google.com/file/d/1XoL2oT8Hj5AI3LMz3XqpCozT1QC3I6QP/view?usp=sharing" target="_blank">Formato de Mantenimiento<b>CDM-AD-FR-007</b></a> 
+                </div>
+
+                 <!-- Preprensa -->
+                 <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Preprensa</button>
+                <div class="submenu-content">
+                    <a href="#" target="_blank"><b>CDM-PR-PD-005</b></a>
+                </div>
+                
+                 <!-- IMPRESION -->
+                 <button class="nested-submenu-button">
+                    <i class="fas fa-folder-open icon-submenu"></i> Impresion</button>
+                <div class="nested-submenu-content">
+                    <a href="https://drive.google.com/file/d/1F6ZhClFQcVqELuAjpzXEutU6ugkWa8M1/view?usp=sharing " target="_blank">Procedimiento de impresion <b>CDM-PR-PD-001</b></a>
+                    <a href="https://drive.google.com/file/d/1PZMc7gPd26V2blFug1lgafDfDoExNwkx/view?usp=sharing " target="_blank">Procedimiento de impresion KBA <b>CDM-PR-PD-003</b></a>
+                    <a href="https://drive.google.com/file/d/1Z-W2douCmYV8uLTSjsatZaau69F-V2HF/view?usp=sharing " target="_blank">Procedimiento de impresion HP <b>CDM-PR-PD-004</b></a>
+                </div>
+               
+                <!-- SERIGRAFIA -->
+                <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Serigrafia </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1YpGZOv8w6u3B3a1Lpw2V3jmXoQqW5Zr9/view?usp=sharing " target="_blank">Procedimiento de serigrafia <b>CDM-PR-PD-002</b></a>
+                </div>
+             
+                <!-- SELLADO -->
+                <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Sellado </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1VyKDWib4eWLn0SZvEx8TU7P896kssIuw/view?usp=sharing  " target="_blank">Procedimiento de sellado <b>CDM-PR-PD-006</b></a>
+                </div>
+
+                <!-- LAMINADO -->
+                <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Laminado </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1QHm1RdEvkHyrMBxOHcoiRB55KLvX4p94/view?usp=sharing  " target="_blank">Procedimiento de Laminado <b>CDM-PR-PD-007</b></a>
+                    <a href="https://docs.google.com/spreadsheets/d/10_rMK3gPTfuGt6MdvBjKMMvGMsvZMxf6/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true   " target="_blank">Formato de Registro de Laminado <b>CDM-PR-FR-005</b></a>
+                </div>
+
+                 <!-- Troquelado -->
+                 <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Troquelado </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1Y5-Tp2EFtzze0LTElZdNyNNqpL1d7Ey8/view?usp=sharing " target="_blank">Procedimiento de Troquelado <b>CDM-PR-PD-008</b></a>
+                </div>
+
+                 <!-- personalizacion  -->
+                 <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Personalizacion </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1e0xvQjtVFA_UCzgin3J2E0HAZ3qF-NCo/view?usp=sharing " target="_blank">Procedimiento de personalizacion <b>CDM-PR-PD-009</b></a>
+                </div>
+
+                 <!-- Procedimiento de Fullfilment  -->
+                 <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Procedimiento de Fullfilment </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1xO72ofb64Azc3sdo4_jtCpTXrRQ0asgo/view?usp=sharing " target="_blank">Procedimiento de Fullfilment <b>CDM-PR-PD-010</b></a>
+                </div>
+
+                 <!-- Procedimiento para hacer muestra de cliente. -->
+                 <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Procedimiento para hacer muestra de cliente. </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1lvB7Go6ZMKclMt7C7eeZ4S2l2cGrv5R_/view?usp=sharing" target="_blank">Procedimiento para hacer muestra de cliente.  <b>CDM-PR-PD-011</b></a>
+                </div>
+
+                 <!-- Impresión DOD y Codificación de banda Magnética. -->
+                 <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Impresión DOD y Codificación de banda Magnética </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1UKJPg5eMRBY09KII-cjkFTydywkogoac/view?usp=sharing" target="_blank">Procedimiento de Impresión DOD y Codificación de banda Magnética.<b>CDM-PR-PD-014</b></a>
+                </div>
+
+                 <!-- Reposición en Producción -->
+                 <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Reposición en Producción </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1EWwFclw_NcbvVzsN2fC_tP6YqRLByQs6/view?usp=sharing" target="_blank">Procedimiento para Reposición en Producción  <b>CDM-PR-PD-015</b></a>
+                </div>
+
+                 <!-- Procedimiento para elaboración de Muestras -->
+                 <button class="submenu-button">
+                    <i class="fas fa-folder icon-submenu"></i> Procedimiento para elaboración de Muestras </button>
+                <div class="submenu-content">
+                    <a href="https://drive.google.com/file/d/1wL1SJQwqLYUT-9tDziwNhxIGK_gDcOKR/view?usp=sharing" target="_blank">Procedimiento para elaboración de Muestras  <b>CDM-PR-PD-017</b></a>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+<!--COMIENZA JAVA-->
+    <script>
+        const menuButtons = document.querySelectorAll('.menu-button');
+        const submenuButtons = document.querySelectorAll('.submenu-button');
+        const nestedSubmenuButtons = document.querySelectorAll('.nested-submenu-button');
+
+        menuButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const isVisible = content.style.display === 'block';
+
+                document.querySelectorAll('.menu-content').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+
+                if (!isVisible) {
+                    content.style.display = 'block';
+                }
+            });
+        });
+
+        submenuButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const isVisible = content.style.display === 'block';
+
+                document.querySelectorAll('.submenu-content').forEach(submenu => {
+                    submenu.style.display = 'none';
+                });
+
+                if (!isVisible) {
+                    content.style.display = 'block';
+                }
+            });
+        });
+
+        nestedSubmenuButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const isVisible = content.style.display === 'block';
+
+                document.querySelectorAll('.nested-submenu-content').forEach(nestedSubmenu => {
+                    nestedSubmenu.style.display = 'none';
+                });
+
+                if (!isVisible) {
+                    content.style.display = 'block';
+                }
+            });
+        });
+    </script>
+<!--TERMINA JAVA-->
+
+
+</body>
+</html>
