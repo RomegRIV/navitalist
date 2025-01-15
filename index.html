@@ -1,165 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lector de Credenciales QR</title>
+    <title>Centro de Documentación - Login</title>
     <style>
+        /* CSS para el estilo de la página */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
         }
 
-        .container {
-            width: 350px;
-            height: 500px;
-            background-color: #c4c4c4;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .login-container {
+            width: 300px;
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .logo {
-            width: 100px;
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            width: 100%;
-        }
-
-        .button {
-            width: 90%;
-            padding: 15px;
-            margin: 10px 0;
-            font-size: 1rem;
-            font-weight: bold;
-            color: white;
-            background-color: #666;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .button img {
-            width: 24px;
-            height: 24px;
-        }
-
-        .button:hover {
-            background-color: #555;
-        }
-
-        .info-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 30px;
-            height: 30px;
-            background-color: #fff;
-            border-radius: 50%;
-            border: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             background-color: white;
-            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
-            z-index: 1000;
+            position: relative;
         }
 
-        .popup button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
+        .login-container img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .login-container h2 {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .input-field {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-field input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .input-field i {
+            margin-right: 10px;
+            color: #666;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6b00;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            background-color: #666;
-            color: white;
         }
 
-        .popup-overlay {
+        .login-button:hover {
+            background-color: #e65a00;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Lector de credenciales QR</h1>
-        <div class="logo">
-            <img src="https://cardmx.com/Portals/0/Logo-cardmx.png?ver=2017-03-09-130008-383" alt="Logotipo">
-        </div>
-
-        <button class="button" onclick="location.href='contadorqr.html'">
-            <img src="https://img.icons8.com/ios-filled/50/FFFFFF/clock.png" alt="Icono de conteo">
-            Conteo de personal
-        </button>
-
-        <button class="button" onclick="location.href='cotejo.html'">
-            <img src="https://img.icons8.com/ios-filled/50/FFFFFF/qr-code.png" alt="Icono de visor">
-            Visor de datos de credencial
-        </button>
-
-        <button class="info-button" onclick="togglePopup()">?</button>
+<div class="login-container">
+    <img src="https://cardmx.com/Portals/0/Logo-cardmx.png?ver=2017-03-09-130008-383" alt="Card MX Logo">
+    <h2>CENTRO DE DOCUMENTACIÓN</h2>
+    <div class="input-field">
+        <i>👤</i>
+        <input type="text" id="username" placeholder="Usuario">
     </div>
-
-    <!-- Popup -->
-    <div class="popup-overlay" id="popup-overlay"></div>
-    <div class="popup" id="popup">
-        <p><strong>Echo por:</strong> Manuel Augusto Rojas Mejía.</p>
-        <p><strong>Residente de:</strong> octubre de 2024 a enero de 2025.</p>
-        <button onclick="togglePopup()">Cerrar</button>
+    <div class="input-field">
+        <i>🔒</i>
+        <input type="password" id="password" placeholder="Contraseña">
     </div>
+    <button class="login-button" onclick="login()">INGRESAR</button>
+    <div class="error-message" id="error-message">Usuario o contraseña incorrectos</div>
+</div>
 
-    <script>
-        function togglePopup() {
-            const popup = document.getElementById('popup');
-            const overlay = document.getElementById('popup-overlay');
-            const isVisible = popup.style.display === 'block';
+<script>
+    // JavaScript para la funcionalidad de login
+    function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const errorMessage = document.getElementById("error-message");
 
-            popup.style.display = isVisible ? 'none' : 'block';
-            overlay.style.display = isVisible ? 'none' : 'block';
+        // Simulación de usuario y contraseña correctos
+        const validUsername = "root";
+        const validPassword = "toor";
+
+
+
+
+
+        if (username === validUsername && password === validPassword) {
+            errorMessage.style.display = "none";
+            // Redirigir a otra página en caso de login exitoso
+            window.location.href = "plantilla.html"; // Cambia "dashboard.html" por la URL a la que quieres redirigir
+        } else {
+            errorMessage.style.display = "block";
         }
-    </script>
+    }
+</script>
 
 </body>
 </html>
