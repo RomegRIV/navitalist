@@ -23,16 +23,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #b7b7b7;
+            background: rgba(183, 183, 183, 0.8); /* Fondo con opacidad */
             color: white;
             padding: 10px 20px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
-
+        
         header img {
             height: 50px;
         }
-
+        
         header button {
             background: #333;
             color: white;
@@ -46,7 +46,7 @@
             gap: 8px;
             transition: background 0.3s ease;
         }
-
+        
         header button:hover {
             background: #555;
         }
@@ -71,7 +71,7 @@
             width: 100%;
             padding: 12px;
             background: #ff7f00;
-            color: white;
+            color: rgb(19, 18, 18);
             border: none;
             text-align: left;
             font-size: 16px;
@@ -191,9 +191,7 @@
 <body>
     <header>
         <img src="https://cardmx.com/Portals/0/Logo-cardmx.png?ver=2017-03-09-130008-383" alt="CARDMX-Logo">
-        <button onclick="window.location.href='index.html'">
-            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión   
-        </button>
+        <button onclick="window.location.href='index.html'"> <i class="fas fa-sign-out-alt"></i> 🔒 Cerrar Sesión</button>
     </header>
 
     <div class="container">
@@ -264,7 +262,7 @@
                     <i class="fas fa-folder icon-submenu"></i> Mantenimiento </button>
                 <div class="submenu-content">
                     <a href="https://drive.google.com/file/d/1XoL2oT8Hj5AI3LMz3XqpCozT1QC3I6QP/view?usp=sharing" target="_blank">Proceso de Mantenimiento<b>CDM-AD-PC-005</b></a>
-                    <a href="https://docs.google.com/spreadsheets/d/1ry_MvX-KMtgqEXbVL7hFogAmxxWayVEU/edit?usp=sharing&rtpof=true&sd=true ">Formato de Mantenimiento<b>CDM-AD-FR-007</b></a> 
+                    <a href="https://docs.google.com/spreadsheets/d/1ry_MvX-KMtgqEXbVL7hFogAmxxWayVEU/edit?usp=sharing&rtpof=true&sd=true " target="_blank">Formato de Mantenimiento<b>CDM-AD-FR-007</b></a> 
                 </div>
 
                  <!-- Preprensa -->
@@ -388,10 +386,10 @@
                     <i class="fas fa-chart-line icon"></i> Almacen </button>
                 <div class="menu-content">
                     <a href="https://drive.google.com/file/d/1Q8fH45gy08LoQG2NVYdjZyI88zebNR6h/view?usp=sharing" target="_blank">
-                        <i class="fas fa-file-alt"></i>Entradas a almacen <b></b> </a>
+                        <i class="fas fa-file-alt"></i>Entradas a almacen <b>CDM-AD-PD-001</b> </a>
     
                     <a href="https://drive.google.com/file/d/1Bi0MFZ5gOwDizrM02SWV0EaYMbFdu6L6/view?usp=sharing " target="_blank">
-                        <i class="fas fa-file-alt"></i>Salidas de almacen <b></b> </a>
+                        <i class="fas fa-file-alt"></i>Salidas de almacen <b>CDM-AD-PD-002</b> </a>
     
                 <!--sub menus-->
                 </div>
@@ -449,6 +447,49 @@
                     <a href="https://docs.google.com/document/d/1ADC_0Do3pRHanmWWL5lGlJzFzDxRwiSq/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
                         <i class="fas fa-file-alt"></i>Formato de solicitud de EPP <b>CDM-AD-FR-017</b> </a>
                     
+                <!--sub menus-->
+                </div>
+            </div>
+
+<!-- SGC  --> 
+            <div class="menu">
+                <button class="menu-button">
+                    <i class="fas fa-chart-line icon"></i> Sistema de gestion de calidad </button>
+                <div class="menu-content">
+                    <a href="https://drive.google.com/file/d/1Jx6Y26CyLQKT3Km6DtHxXkcdyoQF3jIv/view?usp=sharing" target="_blank">
+                        <i class="fas fa-file-alt"></i> Política de Calidad <b>CDM-SGC-PL-001</b>
+                    </a>
+                    <a href="https://docs.google.com/spreadsheets/d/1SgTwohdFlVEP8qDWcuW1Oxw64eN7pG1J/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Analisis Pestel <b>CARDMX</b>
+                    </a>
+                    <a href="https://docs.google.com/spreadsheets/d/1_llvz9pqDHeUbcw2xXGuOADDiNr3zHL5/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Matriz de Responsabilidades <b>CDM-SGC-MT-001</b>
+                    </a>
+                    <a href="https://docs.google.com/document/d/1x4J_56bjqVArRMHbP9Hw8cbGphSX7tmG/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Formato de Plan de Mejora <b>CDM-SGC-FR-001</b>
+                    </a>
+                    <a href="https://docs.google.com/document/d/1Bcvv3lvm2d3yt4dkvicjTtECuSm3JnZx/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Formato para Informe de Auditoría <b>CDM-SGC-FR-003</b>
+                    </a>
+                    <a href="https://docs.google.com/document/d/1wclRBM4-ubUCyRjdURVxNZMo3iFbPE1u/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Formato para Reunión de Apertura <b>CDM-SGC-FR-004</b>
+                    </a>
+                    <a href="https://docs.google.com/document/d/1cOP8jFR84zThgO0EMidq8BBMUF6DVocr/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Formato para Plan de Auditoría <b>CDM-SGC-FR-005</b>
+                    </a>
+                    <a href="https://docs.google.com/document/d/1Kzb-lDExpK27sVhkubVzsYT6Y04u0sV8/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
+                        <i class="fas fa-file-alt"></i> Formato para Reunión de Cierre <b>CDM-SGC-FR-002</b>
+                    </a>
+                    <a href="https://docs.google.com/document/d/1nmmxVybRTMeTHQqALsBoN46Hmj5deRDS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Formato para Requisición de Acciones Correctivas <b>CDM-SGC-FR-006</b>
+                    </a>
+                    <a href="https://docs.google.com/document/d/14Gw2x9QoK6icfyOOftqn9DUGUoFFvLKT/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Revisión por la Dirección <b>CDM-SGC-FR-007</b>
+                    </a>
+                    <a href="https://docs.google.com/document/d/1SNHbPO-2xvgtjIFhBfUpRUIGfTg8nchI/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Formato de Informe de Gestión y Seguimiento de Objetivos <b>CDM-SGC-FR-011</b>
+                    </a>
+    
                 <!--sub menus-->
                 </div>
             </div>
@@ -512,6 +553,7 @@
                 }
             });
         });
+
     </script>
 <!--TERMINA JAVA-->
 
