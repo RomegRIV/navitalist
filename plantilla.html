@@ -83,7 +83,6 @@
             gap: 10px;
             transition: background 0.3s ease;
         }
-
         .menu-button:hover {
             background: #e96b00;
         }
@@ -183,6 +182,51 @@
                 font-size: 12px;
             }
         }
+
+        /* Estilos para la barra de búsqueda */
+    .search-container {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .search-container p {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    #searchInput {
+        padding: 8px;
+        font-size: 16px;
+        width: 250px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /* Estilos para los resultados */
+    #searchResult {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .result-item {
+        margin-bottom: 10px;
+    }
+
+    .result-item a {
+        color: blue;
+        text-decoration: none;
+    }
+
+    .result-item a:hover {
+        text-decoration: underline;
+    }
+
+    .no-results {
+        color: red;
+        font-weight: bold;
+    }
+
     </style>
 <!--TERMINA ESTILOS-->
 
@@ -196,6 +240,20 @@
 
     <div class="container">
         <h1>Centro de Documentación</h1>
+
+          <!--Busqueda personalizada-->        
+          <div class="menu">
+            <button class="menu-button">
+                <i class="fas fa-chart-line icon"></i> Búsqueda de Documentos </button>
+            <div class="menu-content">
+                <div class="search-container">
+                    <p>Ingresa el nombre o código del documento: </p>
+                    <input type="text" id="searchInput" placeholder="Buscar..." oninput="search()">
+                </div>
+                
+                <div id="searchResult"></div> <!-- Aquí se mostrarán los resultados -->
+            </div>
+        </div>
 
         <!--COMERCIALIZACIÓN-->        
         <div class="menu">
@@ -253,9 +311,9 @@
             <button class="menu-button">
                 <i class="fas fa-file-alt icon"></i> Produccion </button>
             <div class="menu-content">
-                <a href="https://drive.google.com/file/d/1J1tR6oJcOW6EvBlO2s-pMJiw4WgW6h1P/view?usp=sharing" target="_blank">
+                <a href="https://drive.google.com/file/d/1WGP6ZZ3kgKS_M0ijCI63hHw3wUPYTxuO/view?usp=sharing" target="_blank">
                     <i class="fas fa-file-alt"></i>
-                    Manual de Comercialización <b>CDM-AD-PC-004</b>
+                    Manual de Producción <b>CDM-AD-PC-004</b>
                 </a>
 
                 <!-- Mantenimiento -->
@@ -489,59 +547,84 @@
 <!-- SGC  --> 
             <div class="menu">
                 <button class="menu-button">
-                    <i class="fas fa-chart-line icon"></i> Sistema de gestión de calidad (SGC) </button>
+                <i class="fas fa-chart-line icon"></i> Sistema de gestión de calidad (SGC) </button>
                 <div class="menu-content">
 
-                    <a href="https://drive.google.com/file/d/1G5N_c9WQ_88Fqci_3MT-1imNG8YOVVq8/view?usp=sharing" target="_blank">
-                        <i class="fas fa-file-alt"></i>Manual de Organización y Funciones <b>CDM-AD-MN-001</b>
+                    <!--1 --> <a href="https://drive.google.com/file/d/1FVRGkpL1hFc2FrzpuS41AgSdICi__AB7/view?usp=sharing" target="_blank">
+                        <i class="fas fa-file-alt"></i>Manual Organizacional <b>CDM-AD-MN-001</b>
                     </a>
 
-                    <a href="https://drive.google.com/file/d/1Jx6Y26CyLQKT3Km6DtHxXkcdyoQF3jIv/view?usp=sharing" target="_blank">
-                        <i class="fas fa-file-alt"></i> Política de Calidad <b>CDM-SGC-PL-001</b>
+                    <a href="https://docs.google.com/document/d/1nmmxVybRTMeTHQqALsBoN46Hmj5deRDS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
+                        <i class="fas fa-file-alt"></i>Requisición de Acciones Correctivas (RAC)<b>CDM-SGC-FR-006</b>
                     </a>
-                    <a href="https://docs.google.com/spreadsheets/d/1SgTwohdFlVEP8qDWcuW1Oxw64eN7pG1J/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Analisis Pestel <b>CARDMX</b>
+
+                    <a href="https://drive.google.com/file/d/10a5mmZc-NuQ7zo2kYS9A6ycpHRcjmcC1/view?usp=sharing" target="_blank">
+                        <i class="fas fa-file-alt"></i> Manual de Gestión de calidad <b>CDM-SGC-MN-001</b>
                     </a>
-                    <a href="https://docs.google.com/spreadsheets/d/1_llvz9pqDHeUbcw2xXGuOADDiNr3zHL5/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Matriz de Responsabilidades <b>CDM-SGC-MT-001</b>
+
+                    <a href="https://drive.google.com/file/d/1bbU3zw94eELBlkE2fJhrhOcFsHdp-Byh/view?usp=sharing" target="_blank">
+                        <i class="fas fa-file-alt"></i>Politica de Calidad<b>CDM-SGC-PL-001</b>
                     </a>
-                    <a href="https://docs.google.com/document/d/1x4J_56bjqVArRMHbP9Hw8cbGphSX7tmG/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Formato de Plan de Mejora <b>CDM-SGC-FR-001</b>
-                    </a>
-                    <a href="https://docs.google.com/document/d/1Bcvv3lvm2d3yt4dkvicjTtECuSm3JnZx/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Formato para Informe de Auditoría <b>CDM-SGC-FR-003</b>
-                    </a>
-                    <a href="https://docs.google.com/document/d/1wclRBM4-ubUCyRjdURVxNZMo3iFbPE1u/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Formato para Reunión de Apertura <b>CDM-SGC-FR-004</b>
-                    </a>
-                    <a href="https://docs.google.com/document/d/1cOP8jFR84zThgO0EMidq8BBMUF6DVocr/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Formato para Plan de Auditoría <b>CDM-SGC-FR-005</b>
-                    </a>
-                    <a href="https://docs.google.com/document/d/1Kzb-lDExpK27sVhkubVzsYT6Y04u0sV8/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i> Formato para Reunión de Cierre <b>CDM-SGC-FR-002</b>
-                    </a>
-                    <a href="https://docs.google.com/document/d/1nmmxVybRTMeTHQqALsBoN46Hmj5deRDS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Formato para Requisición de Acciones Correctivas <b>CDM-SGC-FR-006</b>
-                    </a>
-                    <a href="https://docs.google.com/document/d/14Gw2x9QoK6icfyOOftqn9DUGUoFFvLKT/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Revisión por la Dirección <b>CDM-SGC-FR-007</b>
-                    </a>
+
                     <a href="https://docs.google.com/document/d/1SNHbPO-2xvgtjIFhBfUpRUIGfTg8nchI/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Formato de Informe de Gestión y Seguimiento de Objetivos <b>CDM-SGC-FR-011</b>
-                    </a>
-
-                    <a href=" https://docs.google.com/document/d/1nmmxVybRTMeTHQqALsBoN46Hmj5deRDS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Requisición de Acciones Correctivas (RAC) <b>CDM-SGC-FR-006</b>
+                        <i class="fas fa-file-alt"></i>Evaluación de objetivos <b>CDM-SGC-FR-011</b>
                     </a>
 
                     <a href="https://docs.google.com/spreadsheets/d/1IlJmgYgPtawsRTHlGLUBMoVNj_DvLKjB/edit?usp=sharing&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> "Documentación de Gestión de Riesgos y Análisis Contextual" <b>CDM-SGC-DC-002, CDM-SGC-FR-009, CDM-SGC-FR-010, CDM-SGC-FR-008, CDM-SGC-MT-002</b>
+                        <i class="fas fa-file-alt"></i> Documentos del SGC <b>CDM-SGC-DC-002, CDM-SGC-FR-009, CDM-SGC-FR-010, CDM-SGC-FR-008, CDM-SGC-MT-002</b>
                     </a>
 
-                    
+                    <a href="https://docs.google.com/spreadsheets/d/1qMsdnsxEz7J1Xnf-KyeCap5XQ0f3FRYZ/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Mapa de procesos <b>CDM-SGC-AX-001</b>
+                    </a>
+
+                    <a href="https://docs.google.com/spreadsheets/d/1_llvz9pqDHeUbcw2xXGuOADDiNr3zHL5/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
+                        <i class="fas fa-file-alt"></i> Matriz de responsabilidades <b>CDM-SGC-MT-001</b>
+                    </a>
+
+                    <a href="https://docs.google.com/spreadsheets/d/1SgTwohdFlVEP8qDWcuW1Oxw64eN7pG1J/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
+                        <i class="fas fa-file-alt"></i> Analisis Pestel CARDMX<b></b>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1nmmxVybRTMeTHQqALsBoN46Hmj5deRDS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i> Formato para  de Acciones Correctivas <b>CDM-SGC-FR-006</b>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1x4J_56bjqVArRMHbP9Hw8cbGphSX7tmG/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
+                        <i class="fas fa-file-alt"></i>Formato de Plan de Mejora <b>CDM-SGC-FR-001</b>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1Bcvv3lvm2d3yt4dkvicjTtECuSm3JnZx/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
+                        <i class="fas fa-file-alt"></i>Formato para Informe de Auditoría.<b>CDM-SGC-FR-003</b>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1wclRBM4-ubUCyRjdURVxNZMo3iFbPE1u/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
+                        <i class="fas fa-file-alt"></i>Formato para Reunión de Apertura<b>CDM-SGC-FR-004</b>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1cOP8jFR84zThgO0EMidq8BBMUF6DVocr/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
+                        <i class="fas fa-file-alt"></i>Formato para Plan de Auditoría <b>CDM-SGC-FR-005</b>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1Kzb-lDExpK27sVhkubVzsYT6Y04u0sV8/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
+                        <i class="fas fa-file-alt"></i>Formato para Reunión de Cierre <b>CDM-SGC-FR-002</b>
+                    </a>
+
+                <!----><a href="https://docs.google.com/document/d/1nmmxVybRTMeTHQqALsBoN46Hmj5deRDS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i>Formato para Requisición de Acciones Correctivas  <b>CDM-SGC-FR-006</b>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/14Gw2x9QoK6icfyOOftqn9DUGUoFFvLKT/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i>Revisión por la Dirección.<b>CDM-SGC-FR-007</b>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1SNHbPO-2xvgtjIFhBfUpRUIGfTg8nchI/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
+                        <i class="fas fa-file-alt"></i>Formato de Informe de Gestión y seguimiento de objetivos <b>CDM-SGC-FR-011</b>
+                    </a>
 
 
-    
+
+
                 <!--sub menus-->
                 </div>
             </div>
@@ -606,9 +689,46 @@
             });
         });
 
+// Barra de búsqueda
+function search() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    
+    // Si el campo de búsqueda está vacío, no hacemos nada
+    if (!query.trim()) {
+        document.getElementById('searchResult').innerHTML = '';  // Limpiar el área de resultados
+        return;
+    }
+
+    const links = document.querySelectorAll('a');  // Selecciona todos los enlaces (<a>)
+
+    let found = false;
+    let message = '';
+
+    links.forEach(link => {
+        // Verifica si el texto o el href del enlace contiene la búsqueda
+        if (link.textContent.toLowerCase().includes(query) || link.href.toLowerCase().includes(query)) {
+            // Agrega el nombre del enlace y el enlace a la ubicación en el mensaje
+            const linkText = link.textContent.trim(); // Texto del enlace
+            const linkHref = link.href; // URL del enlace
+
+            // Crea el mensaje para el resultado
+            message += `Enlace encontrado: <strong>${linkText}</strong><br>
+                        URL: <a href="${linkHref}" target="_blank">${linkHref}</a><br><br>`;
+            
+            found = true;
+        }
+    });
+
+    // Si se encontraron resultados, muestra el mensaje, de lo contrario muestra un aviso de no encontrado
+    const resultContainer = document.getElementById('searchResult');
+    if (found) {
+        resultContainer.innerHTML = message;  // Muestra los resultados encontrados
+    } else {
+        resultContainer.innerHTML = 'No se encontraron resultados para tu búsqueda.';  // Mensaje si no hay coincidencias
+    }
+}
     </script>
 <!--TERMINA JAVA-->
-
 
 </body>
 </html>
