@@ -1,732 +1,557 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="https://cardmx.com/Portals/0/Logo-cardmx.png?ver=2017-03-09-130008-383">
-    <title>Centro de Documentación</title>
-<!--INICIA ESTILOS--> 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Centro de Documentación</title>
+  <link rel="icon" type="image/png" href="https://cardmx.com/Portals/0/Logo-cardmx.png?ver=2017-03-09-130008-383" />
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #f2f2f2;
-            color: #333;
-        }
+  <!-- Fuente y iconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(183, 183, 183, 0.8); /* Fondo con opacidad */
-            color: white;
-            padding: 10px 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        header img {
-            height: 50px;
-        }
-        
-        header button {
-            background: #333;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s ease;
-        }
-        
-        header button:hover {
-            background: #555;
-        }
-
-        .container {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container h1 {
-            margin-bottom: 20px;
-            font-size: 2rem;
-            color: #ff7f00;
-        }
-
-        .menu {
-            width: 90%;
-            margin: 10px auto;
-        }
-
-        .menu-button {
-            width: 100%;
-            padding: 12px;
-            background: #ff7f00;
-            color: rgb(19, 18, 18);
-            border: none;
-            text-align: left;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 3px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: background 0.3s ease;
-        }
-        .menu-button:hover {
-            background: #e96b00;
-        }
-
-        .submenu-button {
-            width: 90%;
-            padding: 10px;
-            background: #e0e0e0;
-            color: #333;
-            border: none;
-            text-align: left;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 3px;
-            margin: 5px auto;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s ease;
-        }
-
-        .submenu-button:hover {
-            background: #d6d6d6;
-        }
-
-        .menu-content, .submenu-content, .nested-submenu-content {
-            display: none;
-            background: white;
-            padding: 10px;
-            border-radius: 3px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu-content a, .submenu-content a, .nested-submenu-content a {
-            display: block;
-            text-decoration: none;
-            color: #333;
-            padding: 8px 10px;
-            border-radius: 3px;
-            transition: background-color 0.3s ease;
-            margin-bottom: 5px;
-        }
-
-        .menu-content a:hover, .submenu-content a:hover, .nested-submenu-content a:hover {
-            background-color: #ffe4c2;
-        }
-
-        .nested-submenu-button {
-            width: 90%;
-            padding: 10px;
-            background: #e0e0e0;
-            color: #333;
-            border: none;
-            text-align: left;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 3px;
-            margin: 5px auto;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s ease;
-        }
-
-        .nested-submenu-button:hover {
-            background: #d6d6d6;
-        }
-
-        /* Icon Styles */
-        .icon {
-            font-size: 18px;
-            color: white;
-        }
-
-        .icon-submenu {
-            font-size: 16px;
-            color: #333;
-        }
-
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .menu-button {
-                font-size: 14px;
-            }
-
-            .submenu-button, .nested-submenu-button {
-                font-size: 12px;
-            }
-
-            .menu-content a, .submenu-content a, .nested-submenu-content a {
-                font-size: 12px;
-            }
-        }
-
-        /* Estilos para la barra de búsqueda */
-    .search-container {
-        display: inline-flex;
-        align-items: center;
-        margin-bottom: 20px;
+  <style>
+    :root{
+      --brand:#ff7f00;            /* Primario */
+      --brand-600:#e96b00;        /* Hover primario */
+      --ink:#1d1d1f;              /* Texto principal */
+      --muted:#666;               /* Texto suave */
+      --bg:#f5f6f8;               /* Fondo */
+      --card:#ffffff;             /* Tarjetas */
+      --stroke:#e5e7eb;           /* Bordes suaves */
+      --focus:#2563eb;            /* Accesibilidad */
+      --ok:#16a34a;               /* Verde */
+      --warning:#ef4444;          /* Rojo */
+      --radius:16px;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
     }
 
-    .search-container p {
-        margin-right: 10px;
-        font-size: 16px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      color:var(--ink); background:var(--bg);
     }
 
-    #searchInput {
-        padding: 8px;
-        font-size: 16px;
-        width: 250px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; padding:12px 20px;
+      background:rgba(82, 78, 78, 0.997); backdrop-filter:saturate(150%) blur(10px);
+      border-bottom:1px solid var(--stroke);
     }
+    header .brand{display:flex; align-items:center; gap:12px}
+    header img{height:42px}
+    header h1{font-size:1.1rem; font-weight:700; letter-spacing:.2px}
+    header .actions{display:flex; align-items:center; gap:8px}
+    .btn{display:inline-flex; gap:8px; align-items:center; border:1px solid var(--stroke); background:#fff; color:var(--ink); padding:8px 12px; border-radius:12px; cursor:pointer; font-weight:600}
+    .btn.primary{background:var(--ink); color:#fff; border-color:transparent}
+    .btn.primary:hover{background:#2b2b2e}
+    .btn:hover{box-shadow:0 6px 14px rgba(0,0,0,.08)}
 
-    /* Estilos para los resultados */
-    #searchResult {
-        margin-top: 20px;
-        font-size: 16px;
+    /* Layout */
+    .shell{display:grid; grid-template-columns:320px 1fr; gap:18px; padding:18px; max-width:1400px; margin:0 auto}
+    @media (max-width: 960px){ .shell{grid-template-columns:1fr} }
+
+    /* Panel izquierdo (navegación) */
+    .panel{
+      background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); box-shadow:var(--shadow);
+      overflow:hidden;
     }
+    .panel-header{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--stroke)}
+    .panel-header h2{margin:0; font-size:1rem}
 
-    .result-item {
-        margin-bottom: 10px;
+    .searchbar{display:flex; align-items:center; gap:10px; padding:10px 12px}
+    .searchbar input{
+      width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--stroke); outline:none; font-size:.95rem; background:#fafafa
     }
+    .searchbar input:focus{border-color:var(--focus); box-shadow:0 0 0 3px rgba(37,99,235,.15)}
 
-    .result-item a {
-        color: blue;
-        text-decoration: none;
+    /* Acordeón */
+    .group{border-top:1px solid var(--stroke)}
+    .group:first-of-type{border-top:0}
+    .group > button{
+      width:100%; background:transparent; border:0; text-align:left; cursor:pointer; padding:14px 16px; display:flex; gap:10px; align-items:center; font-weight:700
     }
+    .group > button:hover{background:#ff7f00}
+    .group > button .chev{margin-left:auto; transition:transform .2s ease}
+    .group.open > button .chev{transform:rotate(90deg)}
 
-    .result-item a:hover {
-        text-decoration: underline;
+    .group .body{display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease; padding:0 12px}
+    .group.open .body{grid-template-rows:1fr;}
+    .group .body > div{overflow:hidden}
+
+    /* Subniveles */
+    .subbtn, .nestbtn{
+      width:100%; background:#e96b00; border:1px solid var(--stroke); color:var(--ink); padding:10px 12px; margin:8px 0; border-radius:12px; display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:200
     }
+    .subbtn:hover, .nestbtn:hover{background:#f1f1f1}
+    .subwrap{display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease}
+    .subwrap.open{grid-template-rows:1fr}
+    .subwrap > div{overflow:hidden}
 
-    .no-results {
-        color: red;
-        font-weight: bold;
+    /* Enlaces de documentos */
+    .doclink{display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius:10px; text-decoration:none; color:var(--ink); border:1px solid transparent}
+    .doclink:hover{background:#fff8f0; border-color:#ffd7ae}
+    .doclink small{color:var(--muted); font-weight:200}
+
+    /* Resultados de búsqueda */
+    .results{border-top:1px dashed var(--stroke); padding:10px 12px}
+    .result-item{display:flex; flex-direction:column; gap:4px; padding:8px 10px; border-radius:10px; border:1px solid var(--stroke); background:#fff; margin:6px 0}
+    .result-item a{color:var(--ink); text-decoration:none}
+    .result-item a:hover{text-decoration:underline}
+    .no-results{color:var(--warning); font-weight:700}
+
+    /* Panel visor (derecha) */
+    .viewer{
+      min-height:70vh; background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden
     }
+    .viewer-toolbar{display:flex; align-items:center; gap:10px; padding:12px; border-bottom:1px solid var(--stroke); background:#fff}
+    .viewer-toolbar .title{flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:700}
+    .viewer-toolbar .pill{font-size:.8rem; border:1px solid var(--stroke); padding:6px 10px; border-radius:999px; background:#fafafa}
+    iframe#docFrame{width:100%; height:calc(100vh - 220px); border:0}
+    @media (max-width:960px){ iframe#docFrame{height:60vh} }
 
-    </style>
-<!--TERMINA ESTILOS-->
+    /* Utilidades */
+    .hidden{display:none}
+    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:#f3f4f6; border:1px solid var(--stroke); border-bottom-width:2px; padding:.1rem .4rem; border-radius:6px}
 
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    /* Accesibilidad foco */
+    :is(button, a):focus-visible{outline:none; box-shadow:0 0 0 3px rgba(37,99,235,.35)}
+  </style>
 </head>
 <body>
-    <header>
-        <img src="https://cardmx.com/Portals/0/Logo-cardmx.png?ver=2017-03-09-130008-383" alt="CARDMX-Logo">
-        <button onclick="window.location.href='index.html'"> <i class="fas fa-sign-out-alt"></i> 🔒 Cerrar Sesión</button>
-    </header>
-
-    <div class="container">
-        <h1>Centro de Documentación</h1>
-
-          <!--Busqueda personalizada-->        
-          <div class="menu">
-            <button class="menu-button">
-                <i class="fas fa-chart-line icon"></i> Búsqueda de Documentos </button>
-            <div class="menu-content">
-                <div class="search-container">
-                    <p>Ingresa el nombre o código del documento: </p>
-                    <input type="text" id="searchInput" placeholder="Buscar..." oninput="search()">
-                </div>
-                
-                <div id="searchResult"></div> <!-- Aquí se mostrarán los resultados -->
-            </div>
-        </div>
-
-        <!--COMERCIALIZACIÓN-->        
-        <div class="menu">
-            <button class="menu-button">
-                <i class="fas fa-chart-line icon"></i> Comercialización </button>
-            <div class="menu-content">
-                <a href="https://drive.google.com/file/d/1J1tR6oJcOW6EvBlO2s-pMJiw4WgW6h1P/view?usp=sharing" target="_blank">
-                    <i class="fas fa-file-alt"></i>
-                    Manual de Comercialización <b>CDM-AD-PC-004</b>
-                </a>
-
-                <!--VENTAS--> 
-                <button class="submenu-button">
-                    <i class="fas fa-dollar-sign icon-submenu"></i> Ventas </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1UWqGiN7GCXTUdIPhdEzU4c2JJNHq08gS/view?usp=sharing" target="_blank">Proceso de ventas <b>CDM-AD-PC-004</b></a>
-                </div>
-
-                <!--DISEÑO--> 
-                <button class="submenu-button">
-                    <i class="fas fa-paint-brush icon-submenu"></i> Diseño </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1oe2fGXY8WlWuxryiQmGoTVUnH0s6CGRS/view?usp=sharing " target="_blank">Proceso de diseño <b>CDM-AD-PC-002</b></a>
-                </div>
-
-                <!--BASE DE DATOS--> 
-                <button class="submenu-button">
-                    <i class="fas fa-database icon-submenu"></i> Base de Datos </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1rwN3Ud-l7V-Mahr9IzpLthW_jpMdYRe-/view?usp=sharing" target="_blank">Procedimiento para Base de Datos <b>CDM-PR-PD-012</b>
-                    </a>
-                </div>
-
-                <!--ATENCIÓN AL CLIENTE--> 
-                <button class="submenu-button">
-                    <i class="fas fa-headset icon-submenu"></i> Atención al Cliente </button>
-                <div class="submenu-content">
-                    <a href="#">Encuaesta a clientes</a>
-                </div>
-
-                <!--DEVOLUCIONES--> 
-                <button class="submenu-button">
-                    <i class="fas fa-undo icon-submenu"></i> Devoluciones </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1sx57Gwix_RnLDt0DjzMwG9as5_ikPVRt/view?usp=sharing " target="_blank"> Manual de Devoluciones<b>CDM-AD-PC-009</b></a>
-                    <a href="https://drive.google.com/file/d/1KGQfOHR7zZ8IpVvBaWh9gueV8djzPaVJ/view?usp=sharing " target="_blank"> Formato para devolución de tarjetas<b>CDM-AD-FR-053</b></a>
-                    <a href="https://drive.google.com/file/d/1tMpnNvH-2c_AqalNgqkjUiG6rdzB3mzL/view?usp=sharing " target="_blank">  Formato de Orden de Cambio <b>CDM-AD-FR-054</b></a>
-                </div>
-
-            </div>
-        </div>
-
- <!-- PRODUCCION -->
-        <div class="menu">
-            <button class="menu-button">
-                <i class="fas fa-file-alt icon"></i> Produccion </button>
-            <div class="menu-content">
-                <a href="https://drive.google.com/file/d/1WGP6ZZ3kgKS_M0ijCI63hHw3wUPYTxuO/view?usp=sharing" target="_blank">
-                    <i class="fas fa-file-alt"></i>
-                    Manual de Producción <b>CDM-AD-PC-004</b>
-                </a>
-
-                <!-- Mantenimiento -->
-                <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Mantenimiento </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1XoL2oT8Hj5AI3LMz3XqpCozT1QC3I6QP/view?usp=sharing" target="_blank">Proceso de Mantenimiento<b>CDM-AD-PC-005</b></a>
-                    <a href="https://docs.google.com/spreadsheets/d/1ry_MvX-KMtgqEXbVL7hFogAmxxWayVEU/edit?usp=sharing&rtpof=true&sd=true " target="_blank">Formato de Mantenimiento<b>CDM-AD-FR-007</b></a> 
-                </div>
-
-                 <!-- Preprensa -->
-                 <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Preprensa</button>
-                <div class="submenu-content">
-                    <a href="#" target="_blank"><b>CDM-PR-PD-005</b></a>
-                </div>
-                
-                 <!-- IMPRESION -->
-                 <button class="nested-submenu-button">
-                    <i class="fas fa-folder-open icon-submenu"></i> Impresion</button>
-                <div class="nested-submenu-content">
-                    <a href="https://drive.google.com/file/d/1F6ZhClFQcVqELuAjpzXEutU6ugkWa8M1/view?usp=sharing " target="_blank">Procedimiento de impresion <b>CDM-PR-PD-001</b></a>
-                    <a href="https://drive.google.com/file/d/1PZMc7gPd26V2blFug1lgafDfDoExNwkx/view?usp=sharing " target="_blank">Procedimiento de impresion KBA <b>CDM-PR-PD-003</b></a>
-                    <a href="https://drive.google.com/file/d/1Z-W2douCmYV8uLTSjsatZaau69F-V2HF/view?usp=sharing " target="_blank">Procedimiento de impresion HP <b>CDM-PR-PD-004</b></a>
-                </div>
-               
-                <!-- SERIGRAFIA -->
-                <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Serigrafia </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1YpGZOv8w6u3B3a1Lpw2V3jmXoQqW5Zr9/view?usp=sharing " target="_blank">Procedimiento de serigrafia <b>CDM-PR-PD-002</b></a>
-                </div>
-             
-                <!-- SELLADO -->
-                <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Sellado </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1Ab36qfxzHDTkYoGZP_fiIxttqLxEWS6J/view?usp=sharing" target="_blank">Procedimiento de sellado <b>CDM-PR-PD-006</b></a>
-                </div>
-
-                <!-- LAMINADO -->
-                <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Laminado </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1QHm1RdEvkHyrMBxOHcoiRB55KLvX4p94/view?usp=sharing  " target="_blank">Procedimiento de Laminado <b>CDM-PR-PD-007</b></a>
-                    <a href="https://docs.google.com/spreadsheets/d/10_rMK3gPTfuGt6MdvBjKMMvGMsvZMxf6/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true   " target="_blank">Formato de Registro de Laminado <b>CDM-PR-FR-005</b></a>
-                </div>
-
-                 <!-- Troquelado -->
-                 <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Troquelado </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1Y5-Tp2EFtzze0LTElZdNyNNqpL1d7Ey8/view?usp=sharing " target="_blank">Procedimiento de Troquelado <b>CDM-PR-PD-008</b></a>
-                </div>
-
-                 <!-- personalizacion  -->
-                 <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Personalizacion </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1e0xvQjtVFA_UCzgin3J2E0HAZ3qF-NCo/view?usp=sharing " target="_blank">Procedimiento de personalizacion <b>CDM-PR-PD-009</b></a>
-                </div>
-
-                 <!-- Procedimiento de Fullfilment  -->
-                 <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Procedimiento de Fullfilment </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1xO72ofb64Azc3sdo4_jtCpTXrRQ0asgo/view?usp=sharing " target="_blank">Procedimiento de Fullfilment <b>CDM-PR-PD-010</b></a>
-                </div>
-
-                 <!-- Procedimiento para hacer muestra de cliente. -->
-                 <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Procedimiento para hacer muestra de cliente. </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1lvB7Go6ZMKclMt7C7eeZ4S2l2cGrv5R_/view?usp=sharing" target="_blank">Procedimiento para hacer muestra de cliente.  <b>CDM-PR-PD-011</b></a>
-                </div>
-
-                 <!-- Impresión DOD y Codificación de banda Magnética. -->
-                 <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Impresión DOD y Codificación de banda Magnética </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1UKJPg5eMRBY09KII-cjkFTydywkogoac/view?usp=sharing" target="_blank">Procedimiento de Impresión DOD y Codificación de banda Magnética.<b>CDM-PR-PD-014</b></a>
-                </div>
-
-                 <!-- Reposición en Producción -->
-                 <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Reposición en Producción </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1EWwFclw_NcbvVzsN2fC_tP6YqRLByQs6/view?usp=sharing" target="_blank">Procedimiento para Reposición en Producción  <b>CDM-PR-PD-015</b></a>
-                </div>
-
-                 <!-- Procedimiento para elaboración de Muestras -->
-                 <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Procedimiento para elaboración de Muestras </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1wL1SJQwqLYUT-9tDziwNhxIGK_gDcOKR/view?usp=sharing" target="_blank">Procedimiento para elaboración de Muestras  <b>CDM-PR-PD-017</b></a>
-                </div>
-
-                <!-- Salida de producto terminado  -->
-                <button class="submenu-button">
-                    <i class="fas fa-folder icon-submenu"></i> Salida de Producto Terminado </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1W9FtkLrfZd1rJIRolwozNnu8i2XkErCm/view?usp=sharing" target="_blank">Vale de salida Producto Terminado <b>CDM-PR-FR-010</b></a>
-                </div>
-
-
-            </div>
-        </div>
-
-        <!--CALIDAD -->        
-        <div class="menu">
-            <button class="menu-button">
-                <i class="fas fa-chart-line icon"></i> Calidad </button>
-            <div class="menu-content">
-                <a href="https://drive.google.com/file/d/1yK3AWa9P14QcvX3MvOAx4zHsn77j1u3j/view?usp=sharing" target="_blank">
-                    <i class="fas fa-file-alt"></i>Inspección de Calidad <b>CDM-CA-PC-001</b> </a>
-
-                <a href="https://docs.google.com/spreadsheets/d/1EsL3pkS9ptVs6A9YmBQtTt6KvUlpYGxJ/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                    <i class="fas fa-file-alt"></i>Matriz de Criterios de Calidad<b>CDM-CA-MT-002</b> </a>
-
-                <a href="https://drive.google.com/file/d/1NU2B5H9gzSKiL4w48gXrSBEOXHzQosyW/view?usp=sharing " target="_blank">
-                    <i class="fas fa-file-alt"></i>Formato de Estado de Control de Calidad <b>CDM-CA-FR-001, CDM-CA-FR-002, CDM-CA-FR-003, CDM-CA-FR-004</b> </a>
-
-                <a href="https://docs.google.com/document/d/1NQ6mwl8rtOM7T-XNah91Nsl_k7T-P-CZ/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                    <i class="fas fa-file-alt"></i>Formato Revisión de Impresión <b>CDM-CA-FR-005</b> </a>
-
-                <a href="https://docs.google.com/spreadsheets/d/1sFVwl1nTqMg_-jGijWX19Z0SHdn2kdQs/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                    <i class="fas fa-file-alt"></i>Formato de Reporte de acción correctiva  <b>CDM-CA-FR-009</b> </a>
-
-                <a href="https://docs.google.com/spreadsheets/d/1327Dh0vfyFcgrSImc1nrY5Q3vCH40zo1/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                    <i class="fas fa-file-alt"></i>Tabla para inspección de producto <b>CDM-CA-MT-001</b> </a>
-            <!--sub menus-->
-            </div>
-        </div>
-
-<!-- Administración  -->        
-<div class="menu">
-    <button class="menu-button">
-        <i class="fas fa-chart-line icon"></i> Administración </button>
-    <div class="menu-content">
-        <a href="https://drive.google.com/file/d/1C7gi8HF4C2hFY-d4vpNEgMqZOPqkLyqC/view?usp=sharing" target="_blank">
-            <i class="fas fa-file-alt"></i>Manual de proceso Administrativo  <b>CDM-AD-PC-010</b> </a>
-
-                <!--finanzas --> 
-                <button class="submenu-button">
-                    <i class="fas fa-dollar-sign icon-submenu"></i> Proceso Finanzas </button>
-                <div class="submenu-content">
-                    <a href="https://drive.google.com/file/d/1xyjOQMTlpdNKLe4ZlrXBluZGSBPFzGFs/view?usp=sharing " target="_blank">Proceso Finanzas <b>CDM-AD-PC-003</b></a>
-                </div>
-
-                 <!--finanzas --> 
-                 <button class="submenu-button">
-                    <i class="fas fa-dollar-sign icon-submenu"></i> Proceso Cajas </button>
-                <div class="submenu-content">
-                    <a href="https://docs.google.com/spreadsheets/d/1XMZBMtrg9O8d7ZvBjR0svYFbxQhpBMbS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">Arqueo de Caja Chica <b>CDM-AD-FR-052</b></a>
-                </div>
-    <!--sub menus-->
+  <header>
+    <div class="brand">
+      <img src="https://cardmx.com/Portals/0/Logo-cardmx.png?ver=2017-03-09-130008-383" alt="CARDMX Logo" />
+      <h1>Centro de Documentación</h1>
     </div>
-</div>
+    <div class="actions">
+      <button class="btn" id="toggleAll" title="Expandir/colapsar todo"><i class="fas fa-layer-group"></i> Secciones</button>
+      <button class="btn primary" onclick="location.href='index.html'"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</button>
+    </div>
+  </header>
 
-<!--ALMACÉN  -->        
-            <div class="menu">
-                <button class="menu-button">
-                    <i class="fas fa-chart-line icon"></i> Almacen </button>
-                <div class="menu-content">
-                    <a href="https://drive.google.com/file/d/1UQYQQzVzN2qlutS9G5ghgW3Iz4lce1qM/view?usp=sharing" target="_blank">
-                        <i class="fas fa-file-alt"></i>PROCEDIMIENTO DE ALMACÉN <b>CDM-AD-PD-001</b> </a>
+  <main class="shell" id="app">
+    <!-- Navegación -->
+    <aside class="panel" id="nav">
+      <div class="panel-header">
+        <h2>Buscar documentos</h2>
+        <span class="pill"><i class="fas fa-lightbulb"></i> Tip: presiona <span class="kbd">/</span> para buscar</span>
+      </div>
+      <div class="searchbar">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input id="searchInput" type="search" placeholder="Ingresa nombre, código o parte de la URL…" aria-label="Buscar documentos" autocomplete="off" />
+      </div>
 
-    
-                <!--sub menus-->
-                </div>
-            </div>
-            
-<!--COMPRAS  -->        
-            <div class="menu">
-                <button class="menu-button">
-                    <i class="fas fa-chart-line icon"></i> Compras </button>
-                <div class="menu-content">
-                    <a href="https://drive.google.com/file/d/1csccm505PSAdB1YFLbGizvoYXMGNCd6c/view?usp=sharing" target="_blank">
-                        <i class="fas fa-file-alt"></i>Proceso de compras <b>CDM-AD-PC-001</b> </a>
-    
-                    <a href="https://docs.google.com/spreadsheets/d/18kQ34lk6Y_JFzgEIYd0w5byAUqGb5edD/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Formato de Requisición de Comp <b>CDM-AD-FR-002</b> </a>
+      <!-- Contenedor de grupos / acordeones -->
+      <div id="groups">
+        <!-- Comercialización -->
+        <section class="group" data-group>
+          <button class="gbtn" aria-expanded="false"><i class="fas fa-chart-line"></i> Comercialización <i class="fas fa-chevron-right chev" aria-hidden="true"></i></button>
+          <div class="body"><div>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1J1tR6oJcOW6EvBlO2s-pMJiw4WgW6h1P/view?usp=sharing"><i class="fas fa-file-alt"></i> Manual de Comercialización <small>CDM-AD-PC-004</small></a>
 
-                    <a href="https://docs.google.com/spreadsheets/d/1aPae9G2-F0tte_eZ4vfCK7eTxSLGN3-L/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato Cuadro Comparativo de Proveedores <b>CDM-AD-FR-001</b> </a>
-    
-                <!--sub menus-->
-                </div>
-            </div>
-    
-<!--Recursos Humanos  -->        
-            <div class="menu">
-                <button class="menu-button">
-                    <i class="fas fa-chart-line icon"></i> Recursos Humanos </button>
-                <div class="menu-content">
+            <button class="subbtn" data-sub> <i class="fas fa-dollar-sign"></i> Ventas <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1UWqGiN7GCXTUdIPhdEzU4c2JJNHq08gS/view?usp=sharing"><i class="fas fa-file-alt"></i> Proceso de ventas <small>CDM-AD-PC-004</small></a>
+            </div></div>
 
-                    <a href="https://drive.google.com/file/d/1tkKaMmSBcCgoJouZhoK7zcq3IFsj0eDh/view" target="_blank">
-                        <i class="fas fa-file-alt"></i>Proceso de Reclutamiento de RRHH <b>CDM-AD-PC-006</b> </a>
+            <button class="subbtn" data-sub><i class="fas fa-paint-brush"></i> Diseño <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1oe2fGXY8WlWuxryiQmGoTVUnH0s6CGRS/view?usp=sharing"><i class="fas fa-file-alt"></i> Proceso de diseño <small>CDM-AD-PC-002</small></a>
+            </div></div>
 
-                        <br>
-                    <a href="https://drive.google.com/file/d/1aSlAPkMH1OKk12EjHlCj_tqOvGJebcFj/view?usp=sharing  " target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato para Requisición de personal <b>CDM-AD-FR-010</b> </a>
+            <button class="subbtn" data-sub><i class="fas fa-database"></i> Base de Datos <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1rwN3Ud-l7V-Mahr9IzpLthW_jpMdYRe-/view?usp=sharing"><i class="fas fa-file-alt"></i> Procedimiento para Base de Datos <small>CDM-PR-PD-012</small></a>
+            </div></div>
 
-                     <a href="https://drive.google.com/file/d/1DTyN6Jevk96tpaylyaNK_Gv7UJx0d-xk/view?usp=sharing " target="_blank">
-                         <i class="fas fa-file-alt"></i>Formato para Solicitud de Vacaciones <b>CDM-AD-FR-011</b> </a>
+            <button class="subbtn" data-sub><i class="fas fa-headset"></i> Atención al Cliente <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <span class="doclink" aria-disabled="true"><i class="fas fa-info-circle"></i> Encuesta a clientes <small>Próximamente</small></span>
+            </div></div>
 
-                    <a href="https://drive.google.com/file/d/19vhxoUbWnJr6LTmHE_9InO5VjfmCNRLv/view?usp=sharing " target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato para Solicitud de Permiso <b>CDM-AD-FR-012</b> </a>
+            <button class="subbtn" data-sub><i class="fas fa-undo"></i> Devoluciones <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1sx57Gwix_RnLDt0DjzMwG9as5_ikPVRt/view?usp=sharing"><i class="fas fa-file-alt"></i> Manual de Devoluciones <small>CDM-AD-PC-009</small></a>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1KGQfOHR7zZ8IpVvBaWh9gueV8djzPaVJ/view?usp=sharing"><i class="fas fa-file-alt"></i> Formato para devolución de tarjetas <small>CDM-AD-FR-053</small></a>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1tMpnNvH-2c_AqalNgqkjUiG6rdzB3mzL/view?usp=sharing"><i class="fas fa-file-alt"></i> Formato de Orden de Cambio <small>CDM-AD-FR-054</small></a>
+            </div></div>
+          </div></div>
+        </section>
 
-                    <a href="https://drive.google.com/file/d/1eCBWpjHcbuK11c6H5dYCwZPFVLAS3cSO/view?usp=sharing  " target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato para Autorización de horas extras <b>CDM-AD-FR-013</b> </a>
-    
-                    <a href="https://drive.google.com/file/d/1lQ8CPhY5ejiYoo7i4asOsrH15jeUcovU/view?usp=sharing " target="_blank">
-                         <i class="fas fa-file-alt"></i>Formato para Autorización de descanso en días laborados <b>CDM-AD-FR-014</b> </a>
+        <!-- Producción -->
+        <section class="group" data-group>
+          <button class="gbtn" aria-expanded="false"><i class="fas fa-file-alt"></i> Producción <i class="fas fa-chevron-right chev" aria-hidden="true"></i></button>
+          <div class="body"><div>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1WGP6ZZ3kgKS_M0ijCI63hHw3wUPYTxuO/view?usp=sharing"><i class="fas fa-file-alt"></i> Manual de Producción <small>CDM-AD-PC-004</small></a>
 
-                    <a href="https://docs.google.com/document/d/1rGb09DeZqd6943x7l9EoBAYsC_4Xxam9/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato para Lista de asistencia a curso / capacitación <b>CDM-AD-FR-005</b> </a>
-                    
-                    <a href="https://drive.google.com/file/d/1SsdrgqGYkmjaTsG5RWox_X7svqrefx4z/view?usp=sharing" target="_blank">
-                        <i class="fas fa-file-alt"></i>Reglamento Interno de Producción. <b>CDM-AD-DC-001</b> </a>
+            <button class="subbtn" data-sub><i class="fas fa-tools"></i> Mantenimiento <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1XoL2oT8Hj5AI3LMz3XqpCozT1QC3I6QP/view?usp=sharing">Proceso de Mantenimiento <small>CDM-AD-PC-005</small></a>
+              <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/1ry_MvX-KMtgqEXbVL7hFogAmxxWayVEU/edit?usp=sharing&rtpof=true&sd=true">Formato de Mantenimiento <small>CDM-AD-FR-007</small></a>
+            </div></div>
 
-                    <a href="https://docs.google.com/document/d/1ADC_0Do3pRHanmWWL5lGlJzFzDxRwiSq/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato de solicitud de EPP <b>CDM-AD-FR-017</b> </a>
-                    
-                <!--sub menus-->
-                </div>
-            </div>
+            <button class="subbtn" data-sub><i class="fas fa-layer-group"></i> Preprensa <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="#"><b>CDM-PR-PD-005</b></a>
+            </div></div>
 
-<!-- SGC  --> 
-            <div class="menu">
-                <button class="menu-button">
-                <i class="fas fa-chart-line icon"></i> Sistema de gestión de calidad (SGC) </button>
-                <div class="menu-content">
+            <button class="nestbtn" data-sub><i class="fas fa-print"></i> Impresión <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1F6ZhClFQcVqELuAjpzXEutU6ugkWa8M1/view?usp=sharing">Procedimiento de impresión <small>CDM-PR-PD-001</small></a>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1PZMc7gPd26V2blFug1lgafDfDoExNwkx/view?usp=sharing">Procedimiento de impresión KBA <small>CDM-PR-PD-003</small></a>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1Z-W2douCmYV8uLTSjsatZaau69F-V2HF/view?usp=sharing">Procedimiento de impresión HP <small>CDM-PR-PD-004</small></a>
+            </div></div>
 
-                    <!--1 --> <a href="https://drive.google.com/file/d/1GZc52R2bqBmLD7YKrmPdXqYUR1cXxQbm/view?usp=drive_link" target="_blank">
-                        <i class="fas fa-file-alt"></i>Manual Organizacional <b>CDM-AD-MN-001</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-border-style"></i> Serigrafía <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1YpGZOv8w6u3B3a1Lpw2V3jmXoQqW5Zr9/view?usp=sharing">Procedimiento de serigrafía <small>CDM-PR-PD-002</small></a>
+            </div></div>
 
-                    <a href="https://docs.google.com/document/d/1nmmxVybRTMeTHQqALsBoN46Hmj5deRDS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i>Requisición de Acciones Correctivas (RAC)<b>CDM-SGC-FR-006</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-link"></i> Sellado <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1Ab36qfxzHDTkYoGZP_fiIxttqLxEWS6J/view?usp=sharing">Procedimiento de sellado <small>CDM-PR-PD-006</small></a>
+            </div></div>
 
-                    <a href="https://drive.google.com/file/d/10a5mmZc-NuQ7zo2kYS9A6ycpHRcjmcC1/view?usp=sharing" target="_blank">
-                        <i class="fas fa-file-alt"></i> Manual de Gestión de calidad <b>CDM-SGC-MN-001</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-clone"></i> Laminado <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1QHm1RdEvkHyrMBxOHcoiRB55KLvX4p94/view?usp=sharing">Procedimiento de Laminado <small>CDM-PR-PD-007</small></a>
+              <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/10_rMK3gPTfuGt6MdvBjKMMvGMsvZMxf6/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true">Formato de Registro de Laminado <small>CDM-PR-FR-005</small></a>
+            </div></div>
 
-                    <a href="https://drive.google.com/file/d/1bbU3zw94eELBlkE2fJhrhOcFsHdp-Byh/view?usp=sharing" target="_blank">
-                        <i class="fas fa-file-alt"></i>Politica de Calidad<b>CDM-SGC-PL-001</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-crop-alt"></i> Troquelado <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1Y5-Tp2EFtzze0LTElZdNyNNqpL1d7Ey8/view?usp=sharing">Procedimiento de Troquelado <small>CDM-PR-PD-008</small></a>
+            </div></div>
 
-                    <a href="https://docs.google.com/document/d/1SNHbPO-2xvgtjIFhBfUpRUIGfTg8nchI/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i>Evaluación de objetivos <b>CDM-SGC-FR-011</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-id-card"></i> Personalización <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1e0xvQjtVFA_UCzgin3J2E0HAZ3qF-NCo/view?usp=sharing">Procedimiento de personalización <small>CDM-PR-PD-009</small></a>
+            </div></div>
 
-                    <a href="https://docs.google.com/spreadsheets/d/1WnQJ_qy8Ls6J8dRY9CiyT9eouTlD4Zc1/edit?usp=drive_link&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i> Documentos del SGC <b>CDM-SGC-DC-002, CDM-SGC-FR-009, CDM-SGC-FR-010, CDM-SGC-FR-008, CDM-SGC-MT-002</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-shipping-fast"></i> Fulfillment <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1xO72ofb64Azc3sdo4_jtCpTXrRQ0asgo/view?usp=sharing">Procedimiento de Fulfillment <small>CDM-PR-PD-010</small></a>
+            </div></div>
 
-                    <a href="https://docs.google.com/spreadsheets/d/1qMsdnsxEz7J1Xnf-KyeCap5XQ0f3FRYZ/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Mapa de procesos <b>CDM-SGC-AX-001</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-vial"></i> Muestra de cliente <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1lvB7Go6ZMKclMt7C7eeZ4S2l2cGrv5R_/view?usp=sharing">Procedimiento para muestra de cliente <small>CDM-PR-PD-011</small></a>
+            </div></div>
 
-                    <a href="https://docs.google.com/spreadsheets/d/1_llvz9pqDHeUbcw2xXGuOADDiNr3zHL5/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i> Matriz de responsabilidades <b>CDM-SGC-MT-001</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-barcode"></i> DOD & Banda Magnética <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1UKJPg5eMRBY09KII-cjkFTydywkogoac/view?usp=sharing">Impresión DOD y Banda Magnética <small>CDM-PR-PD-014</small></a>
+            </div></div>
 
-                    <a href="https://docs.google.com/spreadsheets/d/1SgTwohdFlVEP8qDWcuW1Oxw64eN7pG1J/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i> Analisis Pestel CARDMX<b></b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-sync"></i> Reposición en Producción <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1EWwFclw_NcbvVzsN2fC_tP6YqRLByQs6/view?usp=sharing">Procedimiento para Reposición en Producción <small>CDM-PR-PD-015</small></a>
+            </div></div>
 
-                    <a href="https://docs.google.com/document/d/1nmmxVybRTMeTHQqALsBoN46Hmj5deRDS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i> Formato para  de Acciones Correctivas <b>CDM-SGC-FR-006</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-flask"></i> Elaboración de Muestras <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1wL1SJQwqLYUT-9tDziwNhxIGK_gDcOKR/view?usp=sharing">Procedimiento para elaboración de Muestras <small>CDM-PR-PD-017</small></a>
+            </div></div>
 
-                    <a href="https://docs.google.com/document/d/1x4J_56bjqVArRMHbP9Hw8cbGphSX7tmG/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato de Plan de Mejora <b>CDM-SGC-FR-001</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-archive"></i> Producto Terminado <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1W9FtkLrfZd1rJIRolwozNnu8i2XkErCm/view?usp=sharing">Vale de salida de Producto Terminado <small>CDM-PR-FR-010</small></a>
+            </div></div>
+          </div></div>
+        </section>
 
-                    <a href="https://docs.google.com/document/d/1Bcvv3lvm2d3yt4dkvicjTtECuSm3JnZx/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato para Informe de Auditoría.<b>CDM-SGC-FR-003</b>
-                    </a>
+        <!-- Calidad -->
+        <section class="group" data-group>
+          <button class="gbtn" aria-expanded="false"><i class="fas fa-clipboard-check"></i> Calidad <i class="fas fa-chevron-right chev"></i></button>
+          <div class="body"><div>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1yK3AWa9P14QcvX3MvOAx4zHsn77j1u3j/view?usp=sharing"><i class="fas fa-file-alt"></i> Inspección de Calidad <small>CDM-CA-PC-001</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/1EsL3pkS9ptVs6A9YmBQtTt6KvUlpYGxJ/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="fas fa-table"></i> Matriz de Criterios de Calidad <small>CDM-CA-MT-002</small></a>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1NU2B5H9gzSKiL4w48gXrSBEOXHzQosyW/view?usp=sharing"><i class="fas fa-file-alt"></i> Formato Estado de Control de Calidad <small>CDM-CA-FR-001/002/003/004</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1NQ6mwl8rtOM7T-XNah91Nsl_k7T-P-CZ/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Formato Revisión de Impresión <small>CDM-CA-FR-005</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/1sFVwl1nTqMg_-jGijWX19Z0SHdn2kdQs/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="fas fa-table"></i> Reporte de acción correctiva <small>CDM-CA-FR-009</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/1327Dh0vfyFcgrSImc1nrY5Q3vCH40zo1/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="fas fa-table"></i> Tabla para inspección de producto <small>CDM-CA-MT-001</small></a>
+          </div></div>
+        </section>
 
-                    <a href="https://docs.google.com/document/d/1wclRBM4-ubUCyRjdURVxNZMo3iFbPE1u/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato para Reunión de Apertura<b>CDM-SGC-FR-004</b>
-                    </a>
+        <!-- Administración -->
+        <section class="group" data-group>
+          <button class="gbtn" aria-expanded="false"><i class="fas fa-briefcase"></i> Administración <i class="fas fa-chevron-right chev"></i></button>
+          <div class="body"><div>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1C7gi8HF4C2hFY-d4vpNEgMqZOPqkLyqC/view?usp=sharing"><i class="fas fa-file-alt"></i> Manual de proceso Administrativo <small>CDM-AD-PC-010</small></a>
 
-                    <a href="https://docs.google.com/document/d/1cOP8jFR84zThgO0EMidq8BBMUF6DVocr/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato para Plan de Auditoría <b>CDM-SGC-FR-005</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-dollar-sign"></i> Finanzas <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://drive.google.com/file/d/1xyjOQMTlpdNKLe4ZlrXBluZGSBPFzGFs/view?usp=sharing">Proceso Finanzas <small>CDM-AD-PC-003</small></a>
+            </div></div>
 
-                    <a href="https://docs.google.com/document/d/1Kzb-lDExpK27sVhkubVzsYT6Y04u0sV8/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true" target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato para Reunión de Cierre <b>CDM-SGC-FR-002</b>
-                    </a>
+            <button class="subbtn" data-sub><i class="fas fa-cash-register"></i> Cajas <i class="fas fa-chevron-right chev" style="margin-left:auto"></i></button>
+            <div class="subwrap"><div>
+              <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/1XMZBMtrg9O8d7ZvBjR0svYFbxQhpBMbS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true">Arqueo de Caja Chica <small>CDM-AD-FR-052</small></a>
+            </div></div>
+          </div></div>
+        </section>
 
-                <!----><a href="https://docs.google.com/document/d/1nmmxVybRTMeTHQqALsBoN46Hmj5deRDS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato para Requisición de Acciones Correctivas  <b>CDM-SGC-FR-006</b>
-                    </a>
+        <!-- Almacén -->
+        <section class="group" data-group>
+          <button class="gbtn" aria-expanded="false"><i class="fas fa-warehouse"></i> Almacén <i class="fas fa-chevron-right chev"></i></button>
+          <div class="body"><div>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1UQYQQzVzN2qlutS9G5ghgW3Iz4lce1qM/view?usp=sharing"><i class="fas fa-file-alt"></i> Procedimiento de Almacén <small>CDM-AD-PD-001</small></a>
+          </div></div>
+        </section>
 
-                    <a href="https://docs.google.com/document/d/14Gw2x9QoK6icfyOOftqn9DUGUoFFvLKT/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i>Revisión por la Dirección.<b>CDM-SGC-FR-007</b>
-                    </a>
+        <!-- Compras -->
+        <section class="group" data-group>
+          <button class="gbtn" aria-expanded="false"><i class="fas fa-shopping-cart"></i> Compras <i class="fas fa-chevron-right chev"></i></button>
+          <div class="body"><div>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1csccm505PSAdB1YFLbGizvoYXMGNCd6c/view?usp=sharing"><i class="fas fa-file-alt"></i> Proceso de compras <small>CDM-AD-PC-001</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/18kQ34lk6Y_JFzgEIYd0w5byAUqGb5edD/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="fas fa-table"></i> Requisición de compra <small>CDM-AD-FR-002</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/1aPae9G2-F0tte_eZ4vfCK7eTxSLGN3-L/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="fas fa-table"></i> Cuadro comparativo de proveedores <small>CDM-AD-FR-001</small></a>
+          </div></div>
+        </section>
 
-                    <a href="https://docs.google.com/document/d/1SNHbPO-2xvgtjIFhBfUpRUIGfTg8nchI/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true " target="_blank">
-                        <i class="fas fa-file-alt"></i>Formato de Informe de Gestión y seguimiento de objetivos <b>CDM-SGC-FR-011</b>
-                    </a>
+        <!-- Recursos Humanos -->
+        <section class="group" data-group>
+          <button class="gbtn" aria-expanded="false"><i class="fas fa-users"></i> Recursos Humanos <i class="fas fa-chevron-right chev"></i></button>
+          <div class="body"><div>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1tkKaMmSBcCgoJouZhoK7zcq3IFsj0eDh/view"><i class="fas fa-file-alt"></i> Proceso de Reclutamiento de RRHH <small>CDM-AD-PC-006</small></a>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1aSlAPkMH1OKk12EjHlCj_tqOvGJebcFj/view?usp=sharing"><i class="fas fa-file-alt"></i> Requisición de personal <small>CDM-AD-FR-010</small></a>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1DTyN6Jevk96tpaylyaNK_Gv7UJx0d-xk/view?usp=sharing"><i class="fas fa-file-alt"></i> Solicitud de Vacaciones <small>CDM-AD-FR-011</small></a>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/19vhxoUbWnJr6LTmHE_9InO5VjfmCNRLv/view?usp=sharing"><i class="fas fa-file-alt"></i> Solicitud de Permiso <small>CDM-AD-FR-012</small></a>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1eCBWpjHcbuK11c6H5dYCwZPFVLAS3cSO/view?usp=sharing"><i class="fas fa-file-alt"></i> Autorización de horas extras <small>CDM-AD-FR-013</small></a>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1lQ8CPhY5ejiYoo7i4asOsrH15jeUcovU/view?usp=sharing"><i class="fas fa-file-alt"></i> Descanso en días laborados <small>CDM-AD-FR-014</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1rGb09DeZqd6943x7l9EoBAYsC_4Xxam9/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Lista de asistencia a curso/capacitación <small>CDM-AD-FR-005</small></a>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1SsdrgqGYkmjaTsG5RWox_X7svqrefx4z/view?usp=sharing"><i class="fas fa-file-alt"></i> Reglamento Interno de Producción <small>CDM-AD-DC-001</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1ADC_0Do3pRHanmWWL5lGlJzFzDxRwiSq/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Solicitud de EPP <small>CDM-AD-FR-017</small></a>
+          </div></div>
+        </section>
 
+        <!-- SGC -->
+        <section class="group" data-group>
+          <button class="gbtn" aria-expanded="false"><i class="fas fa-certificate"></i> Sistema de gestión de calidad (SGC) <i class="fas fa-chevron-right chev"></i></button>
+          <div class="body"><div>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1GZc52R2bqBmLD7YKrmPdXqYUR1cXxQbm/view?usp=drive_link"><i class="fas fa-file-alt"></i> Manual Organizacional <small>CDM-AD-MN-001</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1nmmxVybRTMeTHQqALsBoN46Hmj5deRDS/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Requisición de Acciones Correctivas (RAC) <small>CDM-SGC-FR-006</small></a>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/10a5mmZc-NuQ7zo2kYS9A6ycpHRcjmcC1/view?usp=sharing"><i class="fas fa-file-alt"></i> Manual de Gestión de calidad <small>CDM-SGC-MN-001</small></a>
+            <a class="doclink" data-doc href="https://drive.google.com/file/d/1bbU3zw94eELBlkE2fJhrhOcFsHdp-Byh/view?usp=sharing"><i class="fas fa-file-alt"></i> Política de Calidad <small>CDM-SGC-PL-001</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1SNHbPO-2xvgtjIFhBfUpRUIGfTg8nchI/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Evaluación de objetivos <small>CDM-SGC-FR-011</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/1WnQJ_qy8Ls6J8dRY9CiyT9eouTlD4Zc1/edit?usp=drive_link&ouid=113485254066952977039&rtpof=true&sd=true"><i class="fas fa-table"></i> Documentos del SGC <small>CDM-SGC-DC-002/FR-009/FR-010/FR-008/MT-002</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/1qMsdnsxEz7J1Xnf-KyeCap5XQ0f3FRYZ/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="fas fa-project-diagram"></i> Mapa de procesos <small>CDM-SGC-AX-001</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/1_llvz9pqDHeUbcw2xXGuOADDiNr3zHL5/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="fas fa-users-cog"></i> Matriz de responsabilidades <small>CDM-SGC-MT-001</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/spreadsheets/d/1SgTwohdFlVEP8qDWcuW1Oxw64eN7pG1J/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="fas fa-chart-pie"></i> Análisis PESTEL CARDMX</a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1x4J_56bjqVArRMHbP9Hw8cbGphSX7tmG/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Formato de Plan de Mejora <small>CDM-SGC-FR-001</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1Bcvv3lvm2d3yt4dkvicjTtECuSm3JnZx/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Informe de Auditoría <small>CDM-SGC-FR-003</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1wclRBM4-ubUCyRjdURVxNZMo3iFbPE1u/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Reunión de Apertura <small>CDM-SGC-FR-004</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1cOP8jFR84zThgO0EMidq8BBMUF6DVocr/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Plan de Auditoría <small>CDM-SGC-FR-005</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1Kzb-lDExpK27sVhkubVzsYT6Y04u0sV8/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Reunión de Cierre <small>CDM-SGC-FR-002</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/14Gw2x9QoK6icfyOOftqn9DUGUoFFvLKT/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Revisión por la Dirección <small>CDM-SGC-FR-007</small></a>
+            <a class="doclink" data-doc href="https://docs.google.com/document/d/1SNHbPO-2xvgtjIFhBfUpRUIGfTg8nchI/edit?usp=sharing&ouid=113485254066952977039&rtpof=true&sd=true"><i class="far fa-file-word"></i> Informe de Gestión y seguimiento de objetivos <small>CDM-SGC-FR-011</small></a>
+          </div></div>
+        </section>
+      </div>
 
+      <!-- Resultados -->
+      <div class="results" id="searchResult" aria-live="polite"></div>
+    </aside>
 
+    <!-- Visor de documentos -->
+    <section class="viewer" aria-label="Visor de documentos">
+      <div class="viewer-toolbar">
+        <div class="title" id="viewerTitle">Selecciona un documento a la izquierda</div>
+        <a id="openNewTab" class="btn" href="#" target="_blank" rel="noopener" style="display:none"><i class="fas fa-external-link-alt"></i> Abrir en pestaña</a>
+        <button id="copyLink" class="btn" style="display:none"><i class="fas fa-link"></i> Copiar enlace</button>
+      </div>
+      <iframe id="docFrame" title="Documento" src="about:blank" sandbox="allow-scripts allow-forms allow-same-origin allow-popups"></iframe>
+    </section>
+  </main>
 
-                <!--sub menus-->
-                </div>
-            </div>
+  <script>
+    // Utilidades
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
+    // Persistencia de acordeones
+    const stateKey = 'cdm_nav_state_v2';
+    const saved = JSON.parse(localStorage.getItem(stateKey) || '{}');
 
+    // Inicializar acordeones
+    $$('#groups [data-group]').forEach((group, idx)=>{
+      const btn = group.querySelector('.gbtn');
+      const body = group.querySelector('.body');
+      const id = btn.textContent.trim();
+      const open = saved[id] ?? (idx===0); // Abre la primera por defecto
+      group.classList.toggle('open', !!open);
+      btn.setAttribute('aria-expanded', !!open);
+      btn.addEventListener('click', ()=>{
+        const isOpen = group.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen);
+        saved[id] = isOpen; localStorage.setItem(stateKey, JSON.stringify(saved));
+      });
 
-    </div> <!--Ultimo DIV donde va todo-->
-
-
-
-
-
-
-<!--COMIENZA JAVA-->
-    <script>
-        const menuButtons = document.querySelectorAll('.menu-button');
-        const submenuButtons = document.querySelectorAll('.submenu-button');
-        const nestedSubmenuButtons = document.querySelectorAll('.nested-submenu-button');
-
-        menuButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const isVisible = content.style.display === 'block';
-
-                document.querySelectorAll('.menu-content').forEach(menu => {
-                    menu.style.display = 'none';
-                });
-
-                if (!isVisible) {
-                    content.style.display = 'block';
-                }
-            });
+      // Subniveles
+      $$('.subbtn, .nestbtn', group).forEach((subBtn)=>{
+        const wrap = subBtn.nextElementSibling;
+        if(!wrap || !wrap.classList.contains('subwrap')) return;
+        let openSub = false;
+        wrap.classList.toggle('open', openSub);
+        subBtn.addEventListener('click', ()=>{
+          wrap.classList.toggle('open');
+          subBtn.querySelector('.chev')?.classList.toggle('rot');
         });
-
-        submenuButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const isVisible = content.style.display === 'block';
-
-                document.querySelectorAll('.submenu-content').forEach(submenu => {
-                    submenu.style.display = 'none';
-                });
-
-                if (!isVisible) {
-                    content.style.display = 'block';
-                }
-            });
-        });
-
-        nestedSubmenuButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const isVisible = content.style.display === 'block';
-
-                document.querySelectorAll('.nested-submenu-content').forEach(nestedSubmenu => {
-                    nestedSubmenu.style.display = 'none';
-                });
-
-                if (!isVisible) {
-                    content.style.display = 'block';
-                }
-            });
-        });
-
-// Barra de búsqueda
-function search() {
-    const query = document.getElementById('searchInput').value.toLowerCase();
-    
-    // Si el campo de búsqueda está vacío, no hacemos nada
-    if (!query.trim()) {
-        document.getElementById('searchResult').innerHTML = '';  // Limpiar el área de resultados
-        return;
-    }
-
-    const links = document.querySelectorAll('a');  // Selecciona todos los enlaces (<a>)
-
-    let found = false;
-    let message = '';
-
-    links.forEach(link => {
-        // Verifica si el texto o el href del enlace contiene la búsqueda
-        if (link.textContent.toLowerCase().includes(query) || link.href.toLowerCase().includes(query)) {
-            // Agrega el nombre del enlace y el enlace a la ubicación en el mensaje
-            const linkText = link.textContent.trim(); // Texto del enlace
-            const linkHref = link.href; // URL del enlace
-
-            // Crea el mensaje para el resultado
-            message += `Enlace encontrado: <strong>${linkText}</strong><br>
-                        URL: <a href="${linkHref}" target="_blank">${linkHref}</a><br><br>`;
-            
-            found = true;
-        }
+      });
     });
 
-    // Si se encontraron resultados, muestra el mensaje, de lo contrario muestra un aviso de no encontrado
-    const resultContainer = document.getElementById('searchResult');
-    if (found) {
-        resultContainer.innerHTML = message;  // Muestra los resultados encontrados
-    } else {
-        resultContainer.innerHTML = 'No se encontraron resultados para tu búsqueda.';  // Mensaje si no hay coincidencias
-    }
-}
-    </script>
-<!--TERMINA JAVA-->
+    // Expandir/colapsar todo
+    $('#toggleAll').addEventListener('click', ()=>{
+      const anyClosed = $$('#groups .group').some(g=>!g.classList.contains('open'));
+      $$('#groups .group').forEach(g=>{
+        g.classList.toggle('open', anyClosed);
+        g.querySelector('.gbtn')?.setAttribute('aria-expanded', anyClosed);
+      });
+    });
 
+    // Atajo para foco de búsqueda
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === '/' && !/input|textarea/i.test(document.activeElement.tagName)){
+        e.preventDefault(); $('#searchInput').focus();
+      }
+    });
+
+    // Normalizador de URLs de Google para previsualizar dentro del iframe
+    function toPreviewURL(url){
+      try{
+        const u = new URL(url);
+        const host = u.host;
+        // Drive file: /file/d/{id}/view -> /preview
+        if(host.includes('drive.google.com')){
+          u.pathname = u.pathname.replace(/\/view(?:.*)?$/, '/preview');
+          if(!/\/preview$/.test(u.pathname)){
+            // Si no encaja, forzamos preview al final
+            u.pathname += '/preview';
+          }
+          u.search = ''; // limpia params
+          return u.toString();
+        }
+        // Docs/Sheets/Slides: /edit -> /preview
+        if(host.includes('docs.google.com')){
+          u.pathname = u.pathname.replace(/\/edit(?:.*)?$/, '/preview');
+          u.search = ''; return u.toString();
+        }
+        return url;
+      }catch{ return url; }
+    }
+
+    // Visor: interceptar clics de enlaces de documentos
+    const frame = $('#docFrame');
+    const openNew = $('#openNewTab');
+    const copyBtn = $('#copyLink');
+    const titleEl = $('#viewerTitle');
+
+    function loadInViewer(anchor){
+      const raw = anchor.getAttribute('href');
+      const nice = toPreviewURL(raw);
+      frame.src = nice;
+      titleEl.textContent = anchor.textContent.trim();
+      openNew.href = raw; openNew.style.display = '';
+      copyBtn.style.display = '';
+      // guardar último abierto
+      localStorage.setItem('cdm_last_doc', JSON.stringify({t:titleEl.textContent, href:raw}));
+    }
+
+    $$('.doclink').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const href = a.getAttribute('href') || '';
+        if(href.startsWith('#')) return; // enlaces vacíos
+        e.preventDefault();
+        loadInViewer(a);
+      });
+    });
+
+    // Restaurar último documento abierto
+    (function(){
+      try{
+        const last = JSON.parse(localStorage.getItem('cdm_last_doc')||'null');
+        if(last){
+          const el = $$('.doclink').find(d=> (d.getAttribute('href')||'')===last.href);
+          if(el) loadInViewer(el);
+        }
+      }catch{}
+    })();
+
+    // Copiar enlace
+    copyBtn.addEventListener('click', async ()=>{
+      try{
+        const url = openNew.href; await navigator.clipboard.writeText(url);
+        copyBtn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Copiado';
+        copyBtn.style.background = 'var(--ok)'; copyBtn.style.color = '#fff';
+        setTimeout(()=>{ copyBtn.innerHTML = '<i class="fas fa-link"></i> Copiar enlace'; copyBtn.removeAttribute('style'); }, 1600);
+      }catch{
+        alert('No se pudo copiar.');
+      }
+    });
+
+    // Búsqueda avanzada (en vivo)
+    const searchInput = $('#searchInput');
+    const searchResult = $('#searchResult');
+
+    function indexLinks(){
+      return $$('.doclink').map(a=>({
+        el:a,
+        text:(a.textContent||'').toLowerCase(),
+        href:(a.getAttribute('href')||'').toLowerCase()
+      }));
+    }
+    const linkIndex = indexLinks();
+
+    function highlight(text, query){
+      const q = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return text.replace(new RegExp(q,'ig'), m=>`<mark>${m}</mark>`);
+    }
+
+    function runSearch(q){
+      const query = q.trim().toLowerCase();
+      // limpiar
+      searchResult.innerHTML = '';
+      $$('#groups .group').forEach(g=>g.style.display='');
+      $$('.doclink').forEach(l=> l.parentElement.style.display='');
+      if(!query){ return; }
+
+      const hits = linkIndex.filter(i=> i.text.includes(query) || i.href.includes(query));
+
+      // Ocultar todos y mostrar solo secciones con coincidencias
+      const matchedEls = new Set(hits.map(h=>h.el));
+      $$('.doclink').forEach(a=>{
+        if(!matchedEls.has(a)) a.parentElement.style.display='none';
+      });
+
+      // Abrir todos los acordeones para facilitar la vista
+      $$('#groups .group').forEach(g=> g.classList.add('open'));
+      $$('#groups .gbtn').forEach(b=> b.setAttribute('aria-expanded','true'));
+
+      if(hits.length){
+        const frag = document.createDocumentFragment();
+        hits.slice(0, 40).forEach(h=>{
+          const item = document.createElement('div'); item.className='result-item';
+          const title = h.el.textContent.trim();
+          const raw = h.el.getAttribute('href');
+          item.innerHTML = `<div><strong>${highlight(title, q)}</strong></div>
+            <div><a href="${raw}" target="_blank" rel="noopener">${highlight(raw, q)}</a></div>`;
+          item.addEventListener('click', (e)=>{ e.preventDefault(); loadInViewer(h.el); window.scrollTo({top:0, behavior:'smooth'}); });
+          frag.appendChild(item);
+        });
+        searchResult.appendChild(frag);
+      } else {
+        searchResult.innerHTML = '<div class="no-results">No se encontraron resultados</div>';
+      }
+    }
+
+    let t; // debounce
+    searchInput.addEventListener('input', (e)=>{ clearTimeout(t); t=setTimeout(()=>runSearch(e.target.value), 120); });
+
+  </script>
 </body>
 </html>
